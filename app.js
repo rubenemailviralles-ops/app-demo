@@ -461,7 +461,7 @@ function initProgressDots() {
     progressDotsContainer.innerHTML = "";
     slideData.forEach((_, index) => {
         const dot = document.createElement("span");
-        dot.className = `progress-dot ${index === 0 ? 'active' : ''}`;
+        dot.className = `dot ${index === 0 ? 'active' : ''}`;
         dot.title = `Go to slide ${index + 1}`;
         dot.addEventListener("click", () => goToSlide(index));
         progressDotsContainer.appendChild(dot);
@@ -472,6 +472,10 @@ function initProgressDots() {
 function renderSlide(index) {
     const data = slideData[index];
     if (!data) return;
+
+    // Reset slide entry animations to ensure visibility (transition opacity: 0 to 1)
+    slideCard.classList.remove("active");
+    void slideCard.offsetWidth; // Force layout recalculation
 
     // Slide html injection
     const bulletsHtml = data.bullets.map(b => `<li>${b}</li>`).join("");
@@ -492,6 +496,8 @@ function renderSlide(index) {
             </div>
         </div>
     `;
+
+    slideCard.classList.add("active");
 
     // Update presenter details
     if (data.visualAdvice.trim().startsWith("<")) {
@@ -516,7 +522,7 @@ function renderSlide(index) {
     nextBtn.disabled = index === slideData.length - 1;
 
     // Update dots active class
-    const dots = progressDotsContainer.querySelectorAll(".progress-dot");
+    const dots = progressDotsContainer.querySelectorAll(".dot");
     dots.forEach((dot, dotIdx) => {
         if (dotIdx === index) {
             dot.classList.add("active");
