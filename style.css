@@ -1165,3 +1165,38 @@ kbd {
     transform: translateX(-50%) translateY(0);
     opacity: 1;
 }
+
+/* Glowing Neon Flowing Button Style (Try App) */
+.live-app-btn {
+    position: relative;
+    background: linear-gradient(90deg, #64ffda, #00b4d8, #9d4edd, #f72585, #64ffda) !important;
+    background-size: 300% 100% !important;
+    border: none !important;
+    color: #0d1118 !important; /* Dark text for contrast against neon */
+    font-weight: 700 !important;
+    animation: neonFlow 8s linear infinite !important;
+    box-shadow: 0 0 15px rgba(100, 255, 218, 0.45) !important;
+    padding: 0.4rem 0.9rem !important; /* Professional small size */
+    font-size: 0.75rem !important;
+    border-radius: 8px !important;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    transition: var(--transition-smooth) !important;
+}
+
+.live-app-btn:hover {
+    box-shadow: 0 0 22px rgba(247, 37, 133, 0.7) !important;
+    transform: translateY(-1px) scale(1.02);
+}
+
+.live-app-btn svg {
+    stroke: #0d1118 !important; /* Match dark text color */
+}
+
+@keyframes neonFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
