@@ -26,12 +26,14 @@
     padding: 0;
 }
 
-body {
+html, body {
     background-color: var(--bg-dark);
     color: var(--text-main);
     font-family: var(--font-body);
     height: 100vh;
-    overflow: hidden;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
     display: flex;
     flex-direction: column;
 }
@@ -110,7 +112,7 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 1.25rem;
     font-weight: 800;
     color: var(--text-main);
-    white-space: nowrap;
+    line-height: 1.2;
 }
 
 .logo-text .highlight {
