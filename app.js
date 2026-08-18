@@ -237,27 +237,25 @@ const slideData = [
     },
     {
         id: 4,
-        subtitle: "Built-In Points System",
-        title: "Compliance-Ready Points & Rewards",
+        subtitle: "Loyalty & Compliance",
+        title: "Visit-Based Milestones & Rewards",
         bullets: [
-            "<strong>Gift & Transfer Model Ready:</strong> Seamlessly handle compliance in models where direct cannabis sales are replaced by point exchanges.",
-            "<strong>Custom Check-In Rewards:</strong> Automatically award points when members check in, encouraging regular visits.",
-            "<strong>Granular Points Rules:</strong> Easily configure point values, expiration dates, and tier-specific point multiplier rates."
+            "<strong>Milestone Retention Tracks:</strong> Automatically track member check-ins and reward repeat visits (e.g., a 20% discount on their 4th visit).",
+            "<strong>Compliance-Friendly Incentives:</strong> Standard-compliant reward cycles built to align with local club regulations and gift/transfer models.",
+            "<strong>Custom Reward Rules:</strong> Set specific milestones, visit thresholds, expiration dates, and tier-specific reward multipliers on the fly."
         ],
-        visualName: "Points Balance Timeline UI",
-        visualAdvice: "Show an interactive timeline widget displaying a member checking in, points being added, and points being redeemed/transferred for product tokens under a compliant gift model.",
+        visualName: "Visit Progress Tracker Widget",
+        visualAdvice: "A check-in tracker showing visit milestone circles, with visits 1-3 completed and visit 4 glowing with an unlocked 20% discount reward.",
         visualSvg: `
             <svg class="placeholder-svg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <!-- Member Card Layout -->
                 <g filter="url(#glowVioletCard)">
                     <rect x="25" y="30" width="150" height="140" rx="18" fill="#131720" stroke="#9d4edd" stroke-width="1.5"/>
-                    <!-- Glass shine border inside -->
                     <rect x="30" y="35" width="140" height="130" rx="14" fill="#0d1118"/>
                 </g>
                 
                 <!-- Member Profile Header -->
                 <circle cx="56" cy="62" r="14" fill="rgba(157, 78, 221, 0.15)" stroke="#9d4edd" stroke-width="1"/>
-                <!-- Avatar icon -->
                 <path d="M50 69C50 65 52 63 56 63C60 63 62 65 62 69" stroke="#9d4edd" stroke-width="1.5" stroke-linecap="round"/>
                 <circle cx="56" cy="57" r="3.5" stroke="#9d4edd" stroke-width="1.5"/>
                 
@@ -265,24 +263,31 @@ const slideData = [
                 <rect x="78" y="52" width="65" height="7" rx="3.5" fill="rgba(255, 255, 255, 0.1)"/>
                 <rect x="78" y="64" width="40" height="5" rx="2.5" fill="rgba(255, 255, 255, 0.05)"/>
                 
-                <!-- Compliance Badge -->
-                <rect x="128" y="62" width="36" height="8" rx="4" fill="rgba(100, 255, 218, 0.1)" stroke="#64ffda" stroke-width="0.75"/>
-                <text x="146" y="68" fill="#64ffda" font-size="5" font-family="sans-serif" font-weight="bold" text-anchor="middle">ACTIVE</text>
+                <!-- Progress Line Track -->
+                <line x1="50" y1="120" x2="150" y2="120" stroke="rgba(255,255,255,0.08)" stroke-width="4" stroke-linecap="round"/>
+                <line x1="50" y1="120" x2="116" y2="120" stroke="#64ffda" stroke-width="4" stroke-linecap="round"/>
                 
-                <!-- Centered Points Balance Wheel -->
-                <g transform="translate(100, 116)">
-                    <!-- Progress track -->
-                    <circle cx="0" cy="0" r="32" stroke="rgba(255,255,255,0.03)" stroke-width="6"/>
-                    <circle class="animate-dash" cx="0" cy="0" r="32" stroke="url(#violetTealGrad)" stroke-width="6" stroke-dasharray="140 200" stroke-linecap="round"/>
-                    
-                    <!-- Inner Points Display -->
-                    <text x="0" y="-3" fill="#ffffff" font-size="10" font-weight="900" font-family="sans-serif" text-anchor="middle">3,850</text>
-                    <text x="0" y="6" fill="#9d4edd" font-size="5.5" font-weight="bold" font-family="sans-serif" text-anchor="middle" letter-spacing="0.05em">LOYALTY PTS</text>
+                <!-- Node 1: Completed -->
+                <circle cx="50" cy="120" r="10" fill="#0d1118" stroke="#64ffda" stroke-width="2"/>
+                <path d="M47 120L49 122L53 118" stroke="#64ffda" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <text x="50" y="140" fill="rgba(255,255,255,0.4)" font-size="6" font-family="sans-serif" text-anchor="middle">V1</text>
+                
+                <!-- Node 2: Completed -->
+                <circle cx="83" cy="120" r="10" fill="#0d1118" stroke="#64ffda" stroke-width="2"/>
+                <path d="M80 120L82 122L86 118" stroke="#64ffda" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <text x="83" y="140" fill="rgba(255,255,255,0.4)" font-size="6" font-family="sans-serif" text-anchor="middle">V2</text>
+                
+                <!-- Node 3: Completed -->
+                <circle cx="116" cy="120" r="10" fill="#0d1118" stroke="#64ffda" stroke-width="2"/>
+                <path d="M113 120L115 122L119 118" stroke="#64ffda" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <text x="116" y="140" fill="rgba(255,255,255,0.4)" font-size="6" font-family="sans-serif" text-anchor="middle">V3</text>
+                
+                <!-- Node 4: Milestone unlocked! (Glowing Violet/Teal) -->
+                <g class="animate-pulse">
+                    <circle cx="150" cy="120" r="14" fill="#131720" stroke="url(#violetTealGrad)" stroke-width="2.5" filter="url(#glowTealSync)"/>
+                    <text x="150" y="123" fill="#64ffda" font-size="6.5" font-weight="900" font-family="sans-serif" text-anchor="middle">20%</text>
                 </g>
-                
-                <!-- Micro-glow indicators inside the wheel -->
-                <circle class="animate-pulse" cx="72" cy="100" r="3" fill="#64ffda"/>
-                <circle class="animate-pulse" cx="128" cy="132" r="3.5" fill="#f72585"/>
+                <text x="150" y="142" fill="#64ffda" font-size="6" font-family="sans-serif" font-weight="bold" text-anchor="middle">REWARD!</text>
                 
                 <defs>
                     <linearGradient id="violetTealGrad" x1="0" y1="0" x2="1" y2="1">
@@ -292,13 +297,15 @@ const slideData = [
                     <filter id="glowVioletCard" x="-10%" y="-10%" width="120%" height="120%">
                         <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#9d4edd" flood-opacity="0.12"/>
                     </filter>
+                    <filter id="glowTealSync" x="-20%" y="-20%" width="140%" height="140%">
+                        <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#64ffda" flood-opacity="0.4"/>
+                    </filter>
                 </defs>
             </svg>
         `,
         script: `
-            <p><strong>Script:</strong> "For clubs and dispensaries operating under specific legal frameworks—like private gift/transfer models—compliance is everything.</p>
-            <p>Our system includes a built-in Points System designed exactly for this. Instead of direct retail transactions, you can manage point allocations, handle club-to-member point transfers, and reward loyalty automatically when members check in.</p>
-            <p>It’s simple for the consumer, intuitive for staff, and legally compliant by design."</p>
+            <p><strong>Script:</strong> "Driving member retention shouldn't require complex calculations. Our platform features a direct, visit-based milestone loyalty engine.</p>
+            <p>When a member checks in, the system tracks their visit count. On their 4th visit, the POS automatically triggers a 20% discount (or custom club reward). It’s easy for staff, exciting for members, and compliant in gift/transfer legal structures."</p>
         `
     },
     {
