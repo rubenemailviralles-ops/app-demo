@@ -173,13 +173,13 @@ h1, h2, h3, h4, h5, h6 {
 
 .slide-card {
     background: var(--bg-card);
-    border: 1px solid var(--border-color);
+    border: 1.5px solid rgba(157, 78, 221, 0.35) !important; /* Glowing Purple Neon outline */
     border-radius: 24px;
     padding: 2rem 2.5rem; /* Shrunk padding to maximize layout width */
     width: 100%;
     height: 100%;
     max-height: 580px;
-    box-shadow: var(--shadow-premium);
+    box-shadow: 0 0 25px rgba(157, 78, 221, 0.15), var(--shadow-premium) !important; /* Glowing outline */
     backdrop-filter: var(--glass-blur);
     display: grid;
     grid-template-columns: 1fr 1.35fr; /* Shift ratio from 1.2fr 1fr to give visual panel 57% width */
@@ -866,7 +866,8 @@ kbd {
 
 .grid-card {
     background: var(--bg-card);
-    border: 1px solid var(--border-color);
+    border: 1.5px solid rgba(100, 255, 218, 0.25) !important; /* Glowing Teal Neon outline */
+    box-shadow: 0 0 12px rgba(100, 255, 218, 0.08) !important;
     border-radius: 14px;
     padding: 0.75rem 1rem; /* Compact padding to maximize SVG space */
     display: flex;
@@ -882,9 +883,9 @@ kbd {
 }
 
 .grid-card:hover {
-    border-color: var(--primary);
+    border-color: var(--primary) !important;
     transform: scale(1.01) translateY(-1px);
-    box-shadow: 0 8px 20px rgba(100, 255, 218, 0.08), inset 0 0 15px rgba(255, 255, 255, 0.02);
+    box-shadow: 0 0 20px rgba(100, 255, 218, 0.25), inset 0 0 15px rgba(255, 255, 255, 0.02) !important;
 }
 
 .grid-card-subtitle {
@@ -1043,7 +1044,7 @@ kbd {
 /* Try Live App Modal Specific Styles */
 .live-modal-card {
     background: var(--bg-card) !important;
-    border: 1px solid var(--border-color) !important;
+    border: 1.5px solid rgba(100, 255, 218, 0.35) !important; /* Glowing Teal Neon outline */
     border-radius: 24px !important;
     padding: 2rem !important;
     max-width: 800px !important;
@@ -1052,7 +1053,7 @@ kbd {
     display: flex;
     flex-direction: column;
     gap: 1.25rem !important;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6) !important;
+    box-shadow: 0 0 30px rgba(100, 255, 218, 0.18), 0 20px 50px rgba(0, 0, 0, 0.6) !important; /* Glowing outline */
     position: relative; /* Contain close button */
 }
 
@@ -1128,20 +1129,55 @@ kbd {
 }
 
 .live-role-card {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid var(--border-color);
+    background: rgba(255, 255, 255, 0.02) !important;
     border-radius: 12px;
     padding: 1rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     gap: 0.75rem;
-    transition: var(--transition-smooth);
+    transition: var(--transition-smooth) !important;
 }
 
-.live-role-card:hover {
-    border-color: var(--primary);
-    background: rgba(255, 255, 255, 0.04);
+/* Individual Role Card Glows */
+.live-role-card:nth-child(1) { /* Owner */
+    border: 1.5px solid rgba(157, 78, 221, 0.25) !important;
+    box-shadow: 0 0 10px rgba(157, 78, 221, 0.08) !important;
+}
+.live-role-card:nth-child(1):hover {
+    border-color: #9d4edd !important;
+    box-shadow: 0 0 16px rgba(157, 78, 221, 0.25) !important;
+    background: rgba(157, 78, 221, 0.03) !important;
+}
+
+.live-role-card:nth-child(2) { /* Trusted Budtender */
+    border: 1.5px solid rgba(0, 180, 216, 0.25) !important;
+    box-shadow: 0 0 10px rgba(0, 180, 216, 0.08) !important;
+}
+.live-role-card:nth-child(2):hover {
+    border-color: #00b4d8 !important;
+    box-shadow: 0 0 16px rgba(0, 180, 216, 0.25) !important;
+    background: rgba(0, 180, 216, 0.03) !important;
+}
+
+.live-role-card:nth-child(3) { /* Budtender */
+    border: 1.5px solid rgba(100, 255, 218, 0.25) !important;
+    box-shadow: 0 0 10px rgba(100, 255, 218, 0.08) !important;
+}
+.live-role-card:nth-child(3):hover {
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 16px rgba(100, 255, 218, 0.25) !important;
+    background: rgba(100, 255, 218, 0.03) !important;
+}
+
+.live-role-card:nth-child(4) { /* Member View */
+    border: 1.5px solid rgba(255, 183, 3, 0.25) !important;
+    box-shadow: 0 0 10px rgba(255, 183, 3, 0.08) !important;
+}
+.live-role-card:nth-child(4):hover {
+    border-color: #ffb703 !important;
+    box-shadow: 0 0 16px rgba(255, 183, 3, 0.25) !important;
+    background: rgba(255, 183, 3, 0.03) !important;
 }
 
 .role-badge {
