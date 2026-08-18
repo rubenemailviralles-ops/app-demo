@@ -754,43 +754,43 @@ kbd {
 
 /* Dashboard Pane & Header Layout */
 .dashboard-pane {
-    padding: 3rem 2.5rem;
+    padding: 1.5rem 2.5rem;
     width: 100%;
     display: flex;
     flex-direction: column;
-    overflow-y: auto;
+    overflow-y: hidden; /* Lock vertical scrolling on desktop */
     height: 100%;
 }
 
 .dashboard-header-block {
-    margin-bottom: 2.5rem;
+    margin-bottom: 1.25rem;
     border-bottom: 1px solid var(--border-color);
-    padding-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
 }
 
 .dash-subtitle {
     color: var(--primary);
     text-transform: uppercase;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     letter-spacing: 0.15em;
     font-weight: 600;
     display: block;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
 }
 
 .dash-title {
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 800;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
     background: linear-gradient(135deg, #ffffff, #d1d5db);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 .dash-desc {
-    font-size: 1.05rem;
+    font-size: 0.95rem;
     color: var(--text-muted);
-    line-height: 1.6;
+    line-height: 1.4;
     max-width: 950px;
 }
 
@@ -798,20 +798,30 @@ kbd {
 .dashboard-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* 3 cards next to each other */
-    gap: 2rem;
+    grid-template-rows: repeat(2, 1fr); /* Exactly 2 equal rows to fill space */
+    gap: 1.25rem;
     width: 100%;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
+    flex: 1; /* Stretch to fill available viewport height */
+    min-height: 0; /* Allow items to shrink */
 }
 
 @media (max-width: 990px) {
     .dashboard-grid {
         grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+        flex: none;
+    }
+    .dashboard-pane {
+        overflow-y: auto; /* Enable scrolling on smaller screens */
     }
 }
 
 @media (max-width: 650px) {
     .dashboard-grid {
         grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        flex: none;
     }
 }
 
@@ -819,7 +829,7 @@ kbd {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
     border-radius: 20px;
-    padding: 2rem;
+    padding: 1.25rem; /* Compact padding */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -828,46 +838,48 @@ kbd {
     backdrop-filter: var(--glass-blur);
     position: relative;
     overflow: hidden;
-    height: 310px;
+    height: 100%; /* Fill grid cell exactly */
+    min-height: 0;
 }
 
 .grid-card:hover {
     border-color: var(--primary);
-    transform: scale(1.04) translateY(-4px); /* Zoom-in scale effect on hover */
-    box-shadow: 0 15px 40px rgba(100, 255, 218, 0.12), inset 0 0 20px rgba(255, 255, 255, 0.02);
+    transform: scale(1.03) translateY(-2px); /* Subtle scale effect */
+    box-shadow: 0 12px 30px rgba(100, 255, 218, 0.1), inset 0 0 20px rgba(255, 255, 255, 0.02);
 }
 
 .grid-card-subtitle {
     color: var(--secondary);
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
     display: block;
 }
 
 .grid-card-title {
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     font-weight: 700;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
     color: #ffffff;
 }
 
 .grid-card-preview {
     width: 100%;
     flex: 1; /* Stretch to fill card space */
-    margin-top: 1rem;
+    margin-top: 0.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
     opacity: 0.75;
     transition: var(--transition-smooth);
+    min-height: 0;
 }
 
 .grid-card:hover .grid-card-preview {
     opacity: 1;
-    transform: scale(1.05);
+    transform: scale(1.03);
 }
 
 .mini-visual-graphic {
@@ -876,12 +888,13 @@ kbd {
     display: flex;
     align-items: center;
     justify-content: center;
+    min-height: 0;
 }
 
 .mini-visual-graphic svg {
-    max-height: 160px;
-    width: 100%;
-    max-width: 240px;
+    max-height: 100%; /* Constrain to grid cell height dynamically */
+    width: auto;
+    max-width: 100%;
     overflow: visible;
 }
 
