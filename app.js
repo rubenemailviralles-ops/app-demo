@@ -484,6 +484,9 @@ function zoomCard(index) {
         }
     });
 
+    // Update Presenter layout
+    updatePresenterLayout();
+
     // Show zoomed elements smoothly
     zoomOverlay.classList.add("show");
     
@@ -491,23 +494,33 @@ function zoomCard(index) {
     footerControls.classList.remove("hidden");
     sidebarToggleTab.classList.remove("hidden");
     togglePresenterBtn.classList.remove("hidden");
+}
 
-    // If presenter mode is active, make sure sidebar is expanded
-    if (mainLayout.classList.contains("presenter-mode-active")) {
+let presenterModeActive = true;
+
+function updatePresenterLayout() {
+    if (activeZoomIndex !== null && presenterModeActive) {
+        mainLayout.classList.add("presenter-mode-active");
         presenterSidebar.classList.remove("hidden");
+        togglePresenterBtn.classList.add("active");
+    } else {
+        mainLayout.classList.remove("presenter-mode-active");
+        presenterSidebar.classList.add("hidden");
+        togglePresenterBtn.classList.remove("active");
     }
 }
 
 // Close Zoom Overlay
 function closeZoom() {
     activeZoomIndex = null;
+    updatePresenterLayout();
+
     zoomOverlay.classList.remove("show");
     
     // Hide controls smoothly
     footerControls.classList.add("hidden");
     sidebarToggleTab.classList.add("hidden");
     togglePresenterBtn.classList.add("hidden");
-    presenterSidebar.classList.add("hidden");
 }
 
 function nextZoomCard() {
@@ -535,19 +548,8 @@ function closeLightbox() {
 
 // Presenter mode toggle
 function togglePresenterMode() {
-    if (mainLayout.classList.contains("presenter-mode-active")) {
-        mainLayout.classList.remove("presenter-mode-active");
-        togglePresenterBtn.classList.remove("active");
-        if (activeZoomIndex === null) {
-            presenterSidebar.classList.add("hidden");
-        }
-    } else {
-        mainLayout.classList.add("presenter-mode-active");
-        togglePresenterBtn.classList.add("active");
-        if (activeZoomIndex !== null) {
-            presenterSidebar.classList.remove("hidden");
-        }
-    }
+    presenterModeActive = !presenterModeActive;
+    updatePresenterLayout();
 }
 
 // Event Listeners
