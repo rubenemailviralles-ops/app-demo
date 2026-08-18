@@ -754,7 +754,7 @@ kbd {
 
 /* Dashboard Pane & Header Layout */
 .dashboard-pane {
-    padding: 1.5rem 2.5rem;
+    padding: 1rem 2rem;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -763,34 +763,34 @@ kbd {
 }
 
 .dashboard-header-block {
-    margin-bottom: 1.25rem;
+    margin-bottom: 0.75rem;
     border-bottom: 1px solid var(--border-color);
-    padding-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
 }
 
 .dash-subtitle {
     color: var(--primary);
     text-transform: uppercase;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     letter-spacing: 0.15em;
     font-weight: 600;
     display: block;
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.15rem;
 }
 
 .dash-title {
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 800;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.35rem;
     background: linear-gradient(135deg, #ffffff, #d1d5db);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 .dash-desc {
-    font-size: 0.95rem;
+    font-size: 0.85rem;
     color: var(--text-muted);
-    line-height: 1.4;
+    line-height: 1.35;
     max-width: 950px;
 }
 
@@ -799,9 +799,9 @@ kbd {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* 3 cards next to each other */
     grid-template-rows: repeat(2, 1fr); /* Exactly 2 equal rows to fill space */
-    gap: 1.25rem;
+    gap: 1rem;
     width: 100%;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
     flex: 1; /* Stretch to fill available viewport height */
     min-height: 0; /* Allow items to shrink */
 }
@@ -828,8 +828,8 @@ kbd {
 .grid-card {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
-    border-radius: 20px;
-    padding: 1.25rem; /* Compact padding */
+    border-radius: 16px;
+    padding: 1rem; /* Compact padding to maximize SVG space */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -844,31 +844,31 @@ kbd {
 
 .grid-card:hover {
     border-color: var(--primary);
-    transform: scale(1.03) translateY(-2px); /* Subtle scale effect */
-    box-shadow: 0 12px 30px rgba(100, 255, 218, 0.1), inset 0 0 20px rgba(255, 255, 255, 0.02);
+    transform: scale(1.02) translateY(-2px);
+    box-shadow: 0 10px 25px rgba(100, 255, 218, 0.08), inset 0 0 20px rgba(255, 255, 255, 0.02);
 }
 
 .grid-card-subtitle {
     color: var(--secondary);
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.15rem;
     display: block;
 }
 
 .grid-card-title {
-    font-size: 1.15rem;
+    font-size: 1.05rem;
     font-weight: 700;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
     color: #ffffff;
 }
 
 .grid-card-preview {
     width: 100%;
     flex: 1; /* Stretch to fill card space */
-    margin-top: 0.5rem;
+    margin-top: 0.25rem;
     display: flex;
     align-items: center;
     justify-content: center;
