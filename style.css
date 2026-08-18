@@ -1053,6 +1053,16 @@ kbd {
     flex-direction: column;
     gap: 1.25rem !important;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6) !important;
+    position: relative; /* Contain close button */
+}
+
+.live-modal-card .zoom-close-btn {
+    position: absolute;
+    top: 0.75rem !important;
+    right: 1.25rem !important;
+    font-size: 2.25rem !important;
+    line-height: 1;
+    z-index: 10;
 }
 
 .live-modal-header {
@@ -1063,13 +1073,57 @@ kbd {
 
 .live-roles-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr); /* 2 next to each other by default */
     gap: 1rem;
 }
 
-@media(max-width: 600px) {
+/* Tablet & Mobile popup overrides to prevent clipping and force 2x2 layout on one screen */
+@media (max-width: 768px) {
+    .live-modal-card {
+        padding: 1.25rem 1rem !important;
+        max-width: 95% !important;
+        gap: 0.75rem !important;
+        max-height: 90vh !important;
+    }
+    .live-modal-card .zoom-close-btn {
+        top: 0.5rem !important;
+        right: 0.75rem !important;
+        font-size: 1.85rem !important;
+    }
+    .live-modal-header {
+        padding-bottom: 0.5rem !important;
+        padding-right: 1.5rem; /* Avoid overlap with close button */
+        text-align: left !important;
+    }
+    .live-modal-header h2 {
+        font-size: 1.1rem !important;
+    }
+    .live-modal-header span {
+        font-size: 0.7rem !important;
+    }
     .live-roles-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr) !important; /* Force 2 next to each other */
+        gap: 0.5rem !important;
+    }
+    .live-role-card {
+        padding: 0.6rem !important;
+        gap: 0.4rem !important;
+    }
+    .role-badge {
+        font-size: 0.55rem !important;
+        padding: 0.15rem 0.4rem !important;
+    }
+    .role-details p {
+        font-size: 0.7rem !important;
+        margin-bottom: 0.15rem !important;
+    }
+    .launch-role-btn {
+        padding: 0.4rem !important;
+        font-size: 0.7rem !important;
+    }
+    .live-modal-footer {
+        padding-top: 0.5rem !important;
+        font-size: 0.65rem !important;
     }
 }
 
