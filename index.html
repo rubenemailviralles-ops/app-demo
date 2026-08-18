@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=1.1.0">
+    <link rel="stylesheet" href="style.css?v=1.1.1">
 </head>
 <body class="dark-theme">
     <!-- Header -->
@@ -19,6 +19,10 @@
             <span class="badge">Capabilities</span>
         </div>
         <div class="header-controls">
+            <button id="tryLiveBtn" class="control-btn live-app-btn" title="Try the live application sandbox">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px; vertical-align: middle;"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                <span>Try Live App</span>
+            </button>
         </div>
     </header>
 
@@ -76,6 +80,63 @@
         </div>
     </footer>
 
+    <!-- Try Live App Modal Overlay -->
+    <div id="tryLiveModal" class="zoom-overlay">
+        <div class="zoomed-card-container live-modal-card">
+            <button class="zoom-close-btn" id="tryLiveCloseBtn" title="Close Modal">&times;</button>
+            <div class="live-modal-header">
+                <h2 class="slide-title" style="margin-bottom: 0.5rem;">Try Dispensary Management System Live</h2>
+                <span class="slide-subtitle" style="font-size: 0.85rem;">Select a pre-configured role below to copy its credentials and launch the live sandbox application.</span>
+            </div>
+            
+            <div class="live-roles-grid">
+                <!-- Owner -->
+                <div class="live-role-card" data-passcode="5555">
+                    <div class="role-badge badge-owner">Owner</div>
+                    <div class="role-details">
+                        <p><strong>Username:</strong> <span>sassy</span></p>
+                        <p><strong>Passcode:</strong> <code class="passcode-box">5555</code></p>
+                    </div>
+                    <button class="launch-role-btn">Copy & Launch App</button>
+                </div>
+
+                <!-- Trusted Budtender -->
+                <div class="live-role-card" data-passcode="4444">
+                    <div class="role-badge badge-trusted">Trusted Budtender</div>
+                    <div class="role-details">
+                        <p><strong>Username:</strong> <span>ann</span></p>
+                        <p><strong>Passcode:</strong> <code class="passcode-box">4444</code></p>
+                    </div>
+                    <button class="launch-role-btn">Copy & Launch App</button>
+                </div>
+
+                <!-- Budtender -->
+                <div class="live-role-card" data-passcode="4444">
+                    <div class="role-badge badge-budtender">Budtender</div>
+                    <div class="role-details">
+                        <p><strong>Username:</strong> <span>lizz</span></p>
+                        <p><strong>Passcode:</strong> <code class="passcode-box">4444</code></p>
+                    </div>
+                    <button class="launch-role-btn">Copy & Launch App</button>
+                </div>
+
+                <!-- Member View -->
+                <div class="live-role-card" data-passcode="1111">
+                    <div class="role-badge badge-member">Member View</div>
+                    <div class="role-details">
+                        <p><strong>Username:</strong> <span>menu view</span></p>
+                        <p><strong>Passcode:</strong> <code class="passcode-box">1111</code></p>
+                    </div>
+                    <button class="launch-role-btn">Copy & Launch App</button>
+                </div>
+            </div>
+            
+            <div class="live-modal-footer">
+                <p>ℹ️ The passcode will be copied to your clipboard. Paste or enter it on the live application keypad.</p>
+            </div>
+        </div>
+    </div>
+
     <!-- Image Lightbox Modal -->
     <div id="imageLightbox" class="lightbox">
         <span class="lightbox-close" id="lightboxClose">&times;</span>
@@ -83,6 +144,6 @@
     </div>
 
     <!-- Interactive JS code -->
-    <script src="app.js?v=1.1.0"></script>
+    <script src="app.js?v=1.1.1"></script>
 </body>
 </html>

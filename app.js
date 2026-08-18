@@ -548,6 +548,70 @@ document.addEventListener("keydown", (e) => {
     }
 });
 
+// Try Live App Modal DOM Selections & Logic
+const tryLiveBtn = document.getElementById("tryLiveBtn");
+const tryLiveModal = document.getElementById("tryLiveModal");
+const tryLiveCloseBtn = document.getElementById("tryLiveCloseBtn");
+
+// Show Toast helper
+function showToast(message) {
+    let toast = document.getElementById("toastAlert");
+    if (!toast) {
+        toast = document.createElement("div");
+        toast.id = "toastAlert";
+        toast.className = "toast-alert";
+        document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.classList.add("show");
+    
+    setTimeout(() => {
+        toast.classList.remove("show");
+    }, 2800);
+}
+
+if (tryLiveBtn) {
+    tryLiveBtn.addEventListener("click", () => {
+        tryLiveModal.classList.add("show");
+    });
+}
+
+if (tryLiveCloseBtn) {
+    tryLiveCloseBtn.addEventListener("click", () => {
+        tryLiveModal.classList.remove("show");
+    });
+}
+
+if (tryLiveModal) {
+    tryLiveModal.addEventListener("click", (e) => {
+        if (e.target === tryLiveModal) {
+            tryLiveModal.classList.remove("show");
+        }
+    });
+}
+
+// Copy passcode to clipboard and open live Vercel app
+document.querySelectorAll(".live-role-card").forEach(card => {
+    const btn = card.querySelector(".launch-role-btn");
+    const passcode = card.getAttribute("data-passcode");
+    const roleBadge = card.querySelector(".role-badge");
+    const roleName = roleBadge ? roleBadge.textContent : "Selected Role";
+    
+    if (btn && passcode) {
+        btn.addEventListener("click", () => {
+            navigator.clipboard.writeText(passcode).then(() => {
+                showToast(`${roleName} Passcode (${passcode}) copied! Opening live app...`);
+                setTimeout(() => {
+                    window.open("https://smoking-goblin-420.vercel.app/", "_blank");
+                }, 800);
+            }).catch(err => {
+                console.error("Clipboard copy failed: ", err);
+                window.open("https://smoking-goblin-420.vercel.app/", "_blank");
+            });
+        });
+    }
+});
+
 // Initialization
 renderDashboard();
 initProgressDots();
