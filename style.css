@@ -638,39 +638,39 @@ kbd {
 @media(max-width: 1024px) {
     .presentation-container {
         grid-template-columns: 1fr !important;
-        height: auto;
-        overflow-y: auto;
+        height: calc(100vh - 110px) !important; /* Keep it fixed height */
+        overflow-y: hidden !important; /* Prevent main pane scrolling */
     }
     
     .presentation-container.presenter-mode-active .presenter-sidebar {
-        display: none; /* Hide sidebar on small tablets when in split mode */
+        display: none;
     }
     
     .slide-card {
         grid-template-columns: 1fr;
-        max-height: none;
+        max-height: 90%;
         height: auto;
-        gap: 2rem;
-        padding: 2rem;
+        gap: 1rem;
+        padding: 1.5rem;
     }
     
     .slide-pane {
-        padding: 1.5rem;
+        padding: 1rem;
         height: auto;
-        overflow-y: visible;
+        overflow-y: auto;
     }
 
     body {
-        overflow-y: auto;
-        height: auto;
+        overflow-y: hidden !important; /* Lock body scroll */
+        height: 100vh !important;
     }
     
     .footer-controls {
-        position: sticky;
-        bottom: 0;
+        position: relative;
         background: var(--bg-dark);
         border-top: 1px solid var(--border-color);
         padding: 0 1rem;
+        height: 50px;
     }
     
     .keyboard-legend {
@@ -814,22 +814,42 @@ kbd {
     min-height: 0; /* Allow items to shrink */
 }
 
-@media (max-width: 990px) {
+@media (max-width: 1024px) {
     .dashboard-grid {
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: auto;
-        flex: none;
+        grid-template-columns: repeat(2, 1fr) !important; /* 2 next to each other */
+        grid-template-rows: repeat(3, 1fr) !important; /* Under 2 by 2 by 2 (3 rows) */
+        gap: 0.75rem !important;
+        flex: 1 !important;
+        min-height: 0 !important;
     }
     .dashboard-pane {
-        overflow-y: auto; /* Enable scrolling on smaller screens */
+        overflow-y: hidden !important; /* Try to keep them one screen on tablet */
+        padding: 0.75rem 1.5rem !important;
     }
 }
 
-@media (max-width: 650px) {
+@media (max-width: 600px) {
     .dashboard-grid {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto;
-        flex: none;
+        grid-template-columns: repeat(2, 1fr) !important; /* Still 2 next to each other (2x3) */
+        grid-template-rows: repeat(3, minmax(110px, 1fr)) !important; /* Scale rows naturally if height constraints overflow */
+        gap: 0.5rem !important;
+        flex: none !important;
+    }
+    .dashboard-pane {
+        overflow-y: auto !important; /* Enable internal scrolling on mobile */
+        padding: 0.5rem 1rem !important;
+    }
+    .grid-card {
+        padding: 0.6rem !important; /* Shrink padding for mobile cards */
+    }
+    .grid-card-title {
+        font-size: 0.8rem !important; /* Smaller text size for mobile */
+    }
+    .grid-card-subtitle {
+        font-size: 0.55rem !important;
+    }
+    .grid-card-preview {
+        margin-top: 0.15rem !important;
     }
 }
 
