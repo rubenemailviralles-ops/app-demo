@@ -358,16 +358,12 @@ const zoomOverlay = document.getElementById("zoomOverlay");
 const zoomCardContainer = document.getElementById("zoomCard");
 const zoomCloseBtn = document.getElementById("zoomCloseBtn");
 const footerControls = document.getElementById("footerControls");
-const presenterSidebar = document.getElementById("presenterSidebar");
 
-const visualAdviceContent = document.getElementById("visualAdviceContent");
 const slideStatusIndicator = document.getElementById("slideStatusIndicator");
 const progressDotsContainer = document.getElementById("progressDotsContainer");
-const togglePresenterBtn = document.getElementById("togglePresenterBtn");
 const mainLayout = document.getElementById("mainLayout");
 const prevBtn = document.getElementById("prevBtn");
 const nextBtn = document.getElementById("nextBtn");
-const sidebarToggleTab = document.getElementById("sidebarToggleTab");
 const imageLightbox = document.getElementById("imageLightbox");
 const lightboxImage = document.getElementById("lightboxImage");
 const lightboxClose = document.getElementById("lightboxClose");
@@ -445,22 +441,6 @@ function zoomCard(index) {
 
     zoomCardContainer.classList.add("active");
 
-    // Update presenter details
-    if (data.visualAdvice.trim().startsWith("<")) {
-        visualAdviceContent.innerHTML = data.visualAdvice;
-    } else {
-        visualAdviceContent.innerHTML = `<p>${data.visualAdvice}</p>`;
-    }
-
-    // Bind click zoom triggers to images inside advice-box
-    const imagesInAdvice = visualAdviceContent.querySelectorAll("img");
-    imagesInAdvice.forEach(img => {
-        img.addEventListener("click", (e) => {
-            e.stopPropagation();
-            openLightbox(img.src, img.alt);
-        });
-    });
-
     // Update Status Indicator
     slideStatusIndicator.textContent = `Capability ${index + 1} / ${cardsData.length}`;
 
@@ -478,43 +458,20 @@ function zoomCard(index) {
         }
     });
 
-    // Update Presenter layout
-    updatePresenterLayout();
-
     // Show zoomed elements smoothly
     zoomOverlay.classList.add("show");
     
     // Smoothly popup control elements
     footerControls.classList.remove("hidden");
-    sidebarToggleTab.classList.remove("hidden");
-    togglePresenterBtn.classList.remove("hidden");
-}
-
-let presenterModeActive = true;
-
-function updatePresenterLayout() {
-    if (activeZoomIndex !== null && presenterModeActive) {
-        mainLayout.classList.add("presenter-mode-active");
-        presenterSidebar.classList.remove("hidden");
-        togglePresenterBtn.classList.add("active");
-    } else {
-        mainLayout.classList.remove("presenter-mode-active");
-        presenterSidebar.classList.add("hidden");
-        togglePresenterBtn.classList.remove("active");
-    }
 }
 
 // Close Zoom Overlay
 function closeZoom() {
     activeZoomIndex = null;
-    updatePresenterLayout();
-
     zoomOverlay.classList.remove("show");
     
     // Hide controls smoothly
     footerControls.classList.add("hidden");
-    sidebarToggleTab.classList.add("hidden");
-    togglePresenterBtn.classList.add("hidden");
 }
 
 function nextZoomCard() {
@@ -540,20 +497,9 @@ function closeLightbox() {
     imageLightbox.classList.remove("show");
 }
 
-// Presenter mode toggle
-function togglePresenterMode() {
-    presenterModeActive = !presenterModeActive;
-    updatePresenterLayout();
-}
-
 // Event Listeners
 prevBtn.addEventListener("click", prevZoomCard);
 nextBtn.addEventListener("click", nextZoomCard);
-togglePresenterBtn.addEventListener("click", togglePresenterMode);
-
-if (sidebarToggleTab) {
-    sidebarToggleTab.addEventListener("click", togglePresenterMode);
-}
 
 if (zoomCloseBtn) {
     zoomCloseBtn.addEventListener("click", closeZoom);
@@ -590,11 +536,6 @@ document.addEventListener("keydown", (e) => {
             e.preventDefault();
             prevZoomCard();
         }
-        // Presenter mode toggle key
-        if (e.key.toLowerCase() === "p") {
-            e.preventDefault();
-            togglePresenterMode();
-        }
     }
     
     // Lightbox escape key or close zoom on Escape
@@ -605,14 +546,6 @@ document.addEventListener("keydown", (e) => {
             closeZoom();
         }
     }
-});
-
-// Accordion collapsible behavior for sidebar sections
-document.querySelectorAll(".collapsible-section .section-title").forEach(title => {
-    title.addEventListener("click", () => {
-        const parent = title.parentElement;
-        parent.classList.toggle("active");
-    });
 });
 
 // Initialization
