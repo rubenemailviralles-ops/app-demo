@@ -879,8 +879,9 @@ kbd {
 }
 
 .mini-visual-graphic svg {
-    max-height: 80px;
+    max-height: 160px;
     width: 100%;
+    max-width: 240px;
     overflow: visible;
 }
 
