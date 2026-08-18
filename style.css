@@ -67,14 +67,22 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Navbar */
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.25rem 2.5rem;
     border-bottom: 1px solid var(--border-color);
     background: rgba(10, 12, 16, 0.8);
     backdrop-filter: var(--glass-blur);
     z-index: 10;
+    padding: 0.4rem 2rem;
+    height: 76px; /* Optimized layout height */
+    display: flex;
+    align-items: center;
+}
+
+.header-brand-block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.2rem;
+    width: 100%;
 }
 
 .logo-area {
@@ -126,7 +134,7 @@ h1, h2, h3, h4, h5, h6 {
     display: grid;
     grid-template-columns: 1fr 360px; /* Split view */
     flex: 1;
-    height: calc(100vh - 140px); /* Subtract header and footer */
+    height: calc(100vh - 146px); /* Subtract header and footer */
     position: relative;
     transition: var(--transition-smooth);
 }
@@ -638,7 +646,7 @@ kbd {
 @media(max-width: 1024px) {
     .presentation-container {
         grid-template-columns: 1fr !important;
-        height: calc(100vh - 110px) !important; /* Keep it fixed height */
+        height: calc(100vh - 126px) !important; /* Keep it fixed height */
         overflow-y: hidden !important; /* Prevent main pane scrolling */
     }
     
@@ -817,14 +825,15 @@ kbd {
 @media (max-width: 1024px) {
     .dashboard-grid {
         grid-template-columns: repeat(2, 1fr) !important; /* 2 next to each other */
-        grid-template-rows: repeat(3, 1fr) !important; /* Under 2 by 2 by 2 (3 rows) */
+        grid-template-rows: repeat(3, minmax(0, 1fr)) !important; /* Under 2 by 2 by 2 (3 rows) */
         gap: 0.75rem !important;
         flex: 1 !important;
         min-height: 0 !important;
     }
     .dashboard-pane {
-        overflow-y: hidden !important; /* Try to keep them one screen on tablet */
+        overflow-y: auto !important; /* Enable scrolling on smaller heights to prevent clipping */
         padding: 0.75rem 1.5rem !important;
+        height: 100%;
     }
 }
 
