@@ -27,29 +27,7 @@ const slideData = [
                 <line x1="140" y1="123" x2="116" y2="109" stroke="url(#lineViolet)" stroke-width="1.5" stroke-dasharray="2 2"/>
                 <line x1="60" y1="123" x2="84" y2="109" stroke="url(#linePink)" stroke-width="1.5" stroke-dasharray="2 2"/>
                 
-                <!-- POS Node (Top) -->
-                <g class="animate-pulse">
-                    <circle cx="100" cy="40" r="14" fill="#131720" stroke="#64ffda" stroke-width="2" filter="url(#shadowTeal)"/>
-                    <rect x="94" y="34" width="12" height="12" rx="2" fill="rgba(100, 255, 218, 0.1)"/>
-                    <path d="M96 40H104M98 37H102M98 43H102" stroke="#64ffda" stroke-width="1"/>
-                </g>
-                
-                <!-- Stock Node (Bottom Right) -->
-                <g>
-                    <circle cx="150" cy="128" r="14" fill="#131720" stroke="#9d4edd" stroke-width="2" filter="url(#shadowViolet)"/>
-                    <path d="M144 125L150 120L156 125V132C156 133 155 134 154 134H146C145 134 144 133 144 132V125Z" fill="rgba(157, 78, 221, 0.15)" stroke="#9d4edd" stroke-width="1"/>
-                    <line x1="147" y1="127" x2="153" y2="127" stroke="#9d4edd" stroke-width="1"/>
-                </g>
-                
-                <!-- Member Node (Bottom Left) -->
-                <g>
-                    <circle cx="50" cy="128" r="14" fill="#131720" stroke="#f72585" stroke-width="2" filter="url(#shadowPink)"/>
-                    <path d="M46 134C46 130 48 128 50 128C52 128 54 130 54 134" stroke="#f72585" stroke-width="1.2" stroke-linecap="round"/>
-                    <circle cx="50" cy="124" r="3.5" stroke="#f72585" stroke-width="1.2"/>
-                </g>
-                
                 <defs>
-                    <!-- Gradients -->
                     <radialGradient id="hubGrad" cx="0.5" cy="0.5" r="0.5" fx="0.5" fy="0.5">
                         <stop offset="0%" stop-color="#64ffda" stop-opacity="0.6"/>
                         <stop offset="60%" stop-color="#9d4edd" stop-opacity="0.2"/>
@@ -68,27 +46,14 @@ const slideData = [
                     <linearGradient id="linePink" x1="0" y1="1" x2="1" y2="0">
                         <stop offset="0%" stop-color="#f72585"/><stop offset="100%" stop-color="#f72585" stop-opacity="0.1"/>
                     </linearGradient>
-                    
-                    <!-- Glow filters -->
                     <filter id="glowFilter" x="-30%" y="-30%" width="160%" height="160%">
                         <feGaussianBlur stdDeviation="10" result="blur"/>
-                    </filter>
-                    <filter id="shadowTeal" x="-20%" y="-20%" width="140%" height="140%">
-                        <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#64ffda" flood-opacity="0.3"/>
-                    </filter>
-                    <filter id="shadowViolet" x="-20%" y="-20%" width="140%" height="140%">
-                        <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#9d4edd" flood-opacity="0.3"/>
-                    </filter>
-                    <filter id="shadowPink" x="-20%" y="-20%" width="140%" height="140%">
-                        <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#f72585" flood-opacity="0.3"/>
                     </filter>
                 </defs>
             </svg>
         `,
-        script: `
-            <p><strong>Script:</strong> "Welcome to the Dispensary Management & Logistics System. Modern operations demand high-performance architectures combined with smart, local-first offline support.</p>
-            <p>Today, we present a system built on React, TypeScript, Vite, and Supabase that handles reception, POS till, automated calculations, and compliance logistics inside a single unified portal."</p>
-        `
+        visualAdvice: `<img src="vision_graphic.png" style="width: 100%; border-radius: 8px; border: 1px solid var(--border-color); box-shadow: 0 4px 15px rgba(0,0,0,0.5);" alt="Active Till Center Graphic Suggestion">`,
+        script: `<p>Intro details loaded in header banner.</p>`
     },
     {
         id: 2,
@@ -103,53 +68,40 @@ const slideData = [
         visualAdvice: "A visual showing a numeric lock screen adjacent to active user permission badges (Owner, Trusted Budtender, Member) with custom checkbox indicators.",
         visualSvg: `
             <svg class="placeholder-svg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Passcode grid box -->
                 <rect x="25" y="30" width="70" height="140" rx="12" fill="#131720" stroke="#64ffda" stroke-width="1.5"/>
-                <!-- Passcode screen display dots -->
                 <circle cx="46" cy="48" r="3.5" fill="#64ffda"/>
                 <circle cx="60" cy="48" r="3.5" fill="#64ffda"/>
                 <circle cx="74" cy="48" r="3.5" fill="#64ffda"/>
                 <circle cx="88" cy="48" r="3.5" stroke="rgba(255,255,255,0.2)"/>
                 
-                <!-- Keys Grid -->
                 <g fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)">
                     <rect x="35" y="65" width="12" height="12" rx="2"/>
                     <rect x="54" y="65" width="12" height="12" rx="2"/>
                     <rect x="73" y="65" width="12" height="12" rx="2"/>
-                    
                     <rect x="35" y="85" width="12" height="12" rx="2"/>
                     <rect x="54" y="85" width="12" height="12" rx="2"/>
                     <rect x="73" y="85" width="12" height="12" rx="2"/>
-                    
                     <rect x="35" y="105" width="12" height="12" rx="2"/>
                     <rect x="54" y="105" width="12" height="12" rx="2"/>
                     <rect x="73" y="105" width="12" height="12" rx="2"/>
-                    
                     <rect x="54" y="125" width="12" height="12" rx="2"/>
                 </g>
                 
-                <!-- User Workspace Cards (Right) -->
-                <!-- Owner Card -->
                 <g filter="url(#glowVioletAccess)">
                     <rect x="110" y="35" width="70" height="35" rx="8" fill="#131720" stroke="#9d4edd" stroke-width="1.5"/>
                     <text x="120" y="50" fill="#ffffff" font-size="8" font-family="sans-serif" font-weight="bold">OWNER</text>
                     <text x="120" y="60" fill="rgba(255,255,255,0.5)" font-size="5" font-family="sans-serif">Full System Admin</text>
                 </g>
-                
-                <!-- Budtender Card -->
                 <g>
                     <rect x="110" y="82" width="70" height="35" rx="8" fill="#131720" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
                     <text x="120" y="97" fill="#ffffff" font-size="8" font-family="sans-serif" font-weight="bold">BUDTENDER</text>
                     <text x="120" y="107" fill="rgba(255,255,255,0.5)" font-size="5" font-family="sans-serif">Dispense & Registry</text>
                 </g>
-                
-                <!-- Member Card -->
                 <g>
                     <rect x="110" y="129" width="70" height="35" rx="8" fill="#131720" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
                     <text x="120" y="144" fill="#ffffff" font-size="8" font-family="sans-serif" font-weight="bold">MEMBER</text>
                     <text x="120" y="154" fill="rgba(255,255,255,0.5)" font-size="5" font-family="sans-serif">Dues & Points stats</text>
                 </g>
-                
                 <defs>
                     <filter id="glowVioletAccess" x="-10%" y="-10%" width="120%" height="120%">
                         <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#9d4edd" flood-opacity="0.25"/>
@@ -175,18 +127,14 @@ const slideData = [
         visualAdvice: `<img src="vision_graphic.png" style="width: 100%; border-radius: 8px; border: 1px solid var(--border-color); box-shadow: 0 4px 15px rgba(0,0,0,0.5);" alt="Till Center POS Screenshot">`,
         visualSvg: `
             <svg class="placeholder-svg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Grid background representing items catalog -->
-                <!-- Item 1: Normal Sativa (Top Left) -->
                 <rect x="20" y="35" width="72" height="52" rx="8" fill="#131720" stroke="rgba(255,255,255,0.08)" stroke-width="1.2"/>
                 <circle cx="34" cy="49" r="6" fill="#64ffda" opacity="0.2"/>
                 <text x="34" y="52" fill="#64ffda" font-size="7" font-weight="900" font-family="sans-serif" text-anchor="middle">S</text>
                 <text x="47" y="49" fill="#ffffff" font-size="7" font-weight="bold" font-family="sans-serif">Super Lemon</text>
                 <text x="47" y="57" fill="rgba(255,255,255,0.4)" font-size="5" font-family="sans-serif">Stock: 25g</text>
-                <!-- THC indicator -->
                 <rect x="30" y="68" width="28" height="7" rx="3.5" fill="rgba(255,255,255,0.04)"/>
                 <text x="44" y="73" fill="rgba(255,255,255,0.6)" font-size="4.5" font-family="sans-serif" text-anchor="middle">THC: 22%</text>
                 
-                <!-- Item 2: Sativa Amber Alert Warning (Top Right) -->
                 <g filter="url(#glowAmber)">
                     <rect x="108" y="35" width="72" height="52" rx="8" fill="#131720" stroke="#ffb703" stroke-width="1.5"/>
                     <circle cx="122" cy="49" r="6" fill="#ffb703" opacity="0.2"/>
@@ -197,7 +145,6 @@ const slideData = [
                     <text x="132" y="73" fill="rgba(255,255,255,0.6)" font-size="4.5" font-family="sans-serif" text-anchor="middle">THC: 18%</text>
                 </g>
                 
-                <!-- Item 3: Indica (Bottom Left) -->
                 <rect x="20" y="105" width="72" height="52" rx="8" fill="#131720" stroke="rgba(255,255,255,0.08)" stroke-width="1.2"/>
                 <circle cx="34" cy="119" r="6" fill="#9d4edd" opacity="0.2"/>
                 <text x="34" y="122" fill="#9d4edd" font-size="7" font-weight="900" font-family="sans-serif" text-anchor="middle">I</text>
@@ -206,7 +153,6 @@ const slideData = [
                 <rect x="30" y="138" width="28" height="7" rx="3.5" fill="rgba(255,255,255,0.04)"/>
                 <text x="44" y="143" fill="rgba(255,255,255,0.6)" font-size="4.5" font-family="sans-serif" text-anchor="middle">THC: 24%</text>
                 
-                <!-- Item 4: Sativa (Bottom Right) -->
                 <rect x="108" y="105" width="72" height="52" rx="8" fill="#131720" stroke="rgba(255,255,255,0.08)" stroke-width="1.2"/>
                 <circle cx="122" cy="119" r="6" fill="#64ffda" opacity="0.2"/>
                 <text x="122" y="122" fill="#64ffda" font-size="7" font-weight="900" font-family="sans-serif" text-anchor="middle">S</text>
@@ -240,41 +186,33 @@ const slideData = [
         visualAdvice: "A visual check-in tracker timeline card displaying completed check-in nodes and a glowing unlocked discount node at the milestone.",
         visualSvg: `
             <svg class="placeholder-svg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Discount panel wrapper -->
                 <g filter="url(#glowVioletCampaign)">
                     <rect x="25" y="30" width="150" height="140" rx="18" fill="#131720" stroke="#9d4edd" stroke-width="1.5"/>
                     <rect x="30" y="35" width="140" height="130" rx="14" fill="#0d1118"/>
                 </g>
-                
                 <text x="40" y="55" fill="#9d4edd" font-size="8" font-family="sans-serif" font-weight="900">LOYALTY MILESTONES</text>
                 <text x="40" y="65" fill="rgba(255,255,255,0.5)" font-size="6" font-family="sans-serif">Campaign: 4th Visit 10% Discount</text>
                 
-                <!-- Progress Line Track -->
                 <line x1="50" y1="110" x2="150" y2="110" stroke="rgba(255,255,255,0.08)" stroke-width="4" stroke-linecap="round"/>
                 <line x1="50" y1="110" x2="116" y2="110" stroke="#64ffda" stroke-width="4" stroke-linecap="round"/>
                 
-                <!-- Node 1: Visit 1 -->
                 <circle cx="50" cy="110" r="8" fill="#0d1118" stroke="#64ffda" stroke-width="2"/>
                 <path d="M47 110L49 112L53 108" stroke="#64ffda" stroke-width="1.2" stroke-linecap="round"/>
                 <text x="50" y="130" fill="rgba(255,255,255,0.4)" font-size="5.5" font-family="sans-serif" text-anchor="middle">Visit 1</text>
                 
-                <!-- Node 2: Visit 2 -->
                 <circle cx="83" cy="110" r="8" fill="#0d1118" stroke="#64ffda" stroke-width="2"/>
                 <path d="M80 110L82 112L86 108" stroke="#64ffda" stroke-width="1.2" stroke-linecap="round"/>
                 <text x="83" y="130" fill="rgba(255,255,255,0.4)" font-size="5.5" font-family="sans-serif" text-anchor="middle">Visit 2</text>
                 
-                <!-- Node 3: Visit 3 -->
                 <circle cx="116" cy="110" r="8" fill="#0d1118" stroke="#64ffda" stroke-width="2"/>
                 <path d="M113 110L115 112L119 108" stroke="#64ffda" stroke-width="1.2" stroke-linecap="round"/>
                 <text x="116" y="130" fill="rgba(255,255,255,0.4)" font-size="5.5" font-family="sans-serif" text-anchor="middle">Visit 3</text>
                 
-                <!-- Node 4: Milestone unlocked! (Glowing Teal) -->
                 <g class="animate-pulse">
                     <circle cx="150" cy="110" r="11" fill="#131720" stroke="url(#violetTealGrad)" stroke-width="2.5" filter="url(#glowTealCampaign)"/>
                     <text x="150" y="113" fill="#64ffda" font-size="6.5" font-weight="900" font-family="sans-serif" text-anchor="middle">10%</text>
                 </g>
                 <text x="150" y="132" fill="#64ffda" font-size="5.5" font-family="sans-serif" font-weight="bold" text-anchor="middle">REWARD</text>
-                
                 <defs>
                     <linearGradient id="violetTealGrad" x1="0" y1="0" x2="1" y2="1">
                         <stop offset="0%" stop-color="#9d4edd"/>
@@ -307,28 +245,18 @@ const slideData = [
         visualAdvice: "A coordinates timeline showing past transaction revenues, projecting forward as a glowing, dotted predictive curve indicating weekly and monthly trends.",
         visualSvg: `
             <svg class="placeholder-svg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Axes -->
                 <line x1="30" y1="30" x2="30" y2="150" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
                 <line x1="30" y1="150" x2="170" y2="150" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
-                
-                <!-- Past actual curve -->
                 <path d="M30 130 L60 115 L90 100 L120 70" stroke="#9d4edd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                
-                <!-- Forecast curve (Dotted) -->
                 <g filter="url(#glowTealLine)">
                     <path d="M120 70 L135 55 L150 48 L170 35" stroke="#64ffda" stroke-width="2" stroke-linecap="round" stroke-dasharray="4 4"/>
                 </g>
-                
-                <!-- Tooltip node -->
                 <circle cx="120" cy="70" r="4.5" fill="#9d4edd" stroke="#0d1118" stroke-width="1.5"/>
                 <circle cx="150" cy="48" r="4.5" fill="#64ffda" stroke="#0d1118" stroke-width="1.5"/>
-                
-                <!-- Forecast Tag -->
                 <g filter="url(#glowWidgetForecast)">
                     <rect x="100" y="16" width="70" height="20" rx="5" fill="#131720" stroke="#64ffda" stroke-width="0.75"/>
                     <text x="135" y="28" fill="#64ffda" font-size="6" font-weight="900" font-family="sans-serif" text-anchor="middle">PREDICTIVE: +24%</text>
                 </g>
-                
                 <defs>
                     <filter id="glowTealLine" x="-10%" y="-10%" width="120%" height="120%">
                         <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#64ffda" flood-opacity="0.3"/>
@@ -357,21 +285,13 @@ const slideData = [
         visualAdvice: "A visual showing a central shield padlock element, surrounded by scanning digital matrix blocks and blocked keyboard warning signals.",
         visualSvg: `
             <svg class="placeholder-svg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Shield Padlock -->
                 <g filter="url(#glowShield)">
                     <path d="M100 30 L150 50 V110 C150 140 120 165 100 172 C80 165 50 140 50 110 V50 L100 30 Z" fill="#131720" stroke="#ff4d4d" stroke-width="2"/>
                 </g>
-                
-                <!-- Inner Lock icon -->
                 <rect x="88" y="90" width="24" height="18" rx="3" fill="rgba(255, 77, 77, 0.15)" stroke="#ff4d4d" stroke-width="1.5"/>
                 <path d="M93 90 V80 C93 75 96 72 100 72 C104 72 107 75 107 80 V90" stroke="#ff4d4d" stroke-width="1.5" stroke-linecap="round"/>
-                
-                <!-- Orbiting security grid scanner -->
                 <circle cx="100" cy="100" r="76" stroke="rgba(255, 77, 77, 0.15)" stroke-width="1" stroke-dasharray="6 12"/>
-                
-                <!-- Small status indicators -->
                 <text x="100" y="132" fill="#ff4d4d" font-size="7" font-weight="bold" font-family="sans-serif" text-anchor="middle" letter-spacing="0.05em">SECURED</text>
-                
                 <defs>
                     <filter id="glowShield" x="-20%" y="-20%" width="140%" height="140%">
                         <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#ff4d4d" flood-opacity="0.3"/>
@@ -397,35 +317,24 @@ const slideData = [
         visualAdvice: "A visual showing a safe, closed-loop token database, demonstrating the flow from cash collections into loyalty point wallets.",
         visualSvg: `
             <svg class="placeholder-svg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Balance scale comparing cash vs grams -->
-                <!-- Base stand -->
                 <path d="M100 50 V150" stroke="rgba(255,255,255,0.2)" stroke-width="3" stroke-linecap="round"/>
                 <path d="M70 150 H130" stroke="rgba(255,255,255,0.2)" stroke-width="4" stroke-linecap="round"/>
-                
-                <!-- Cross Beam -->
                 <line x1="50" y1="70" x2="150" y2="70" stroke="#64ffda" stroke-width="2.5" stroke-linecap="round"/>
                 
-                <!-- Left Pan (Cash Token) -->
                 <g filter="url(#glowTealCompliance)">
                     <line x1="50" y1="70" x2="35" y2="115" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
                     <line x1="50" y1="70" x2="65" y2="115" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
                     <path d="M30 115 H70 A20 20 0 0 1 30 115 Z" fill="#131720" stroke="#64ffda" stroke-width="1.5"/>
-                    <!-- Currency symbol -->
                     <text x="50" y="110" fill="#64ffda" font-size="8" font-weight="900" font-family="sans-serif" text-anchor="middle">R</text>
                 </g>
-                
-                <!-- Right Pan (Weight Gram Token) -->
                 <g filter="url(#glowTealCompliance)">
                     <line x1="150" y1="70" x2="135" y2="115" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
                     <line x1="150" y1="70" x2="165" y2="115" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
                     <path d="M130 115 H170 A20 20 0 0 1 130 115 Z" fill="#131720" stroke="#64ffda" stroke-width="1.5"/>
                     <text x="150" y="110" fill="#64ffda" font-size="7" font-weight="900" font-family="sans-serif" text-anchor="middle">g</text>
                 </g>
-                
-                <!-- Center compliance shield -->
                 <circle cx="100" cy="95" r="14" fill="#0d1118" stroke="#9d4edd" stroke-width="1.5"/>
                 <path d="M96 95L99 98L105 92" stroke="#9d4edd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                
                 <defs>
                     <filter id="glowTealCompliance" x="-10%" y="-10%" width="120%" height="120%">
                         <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#64ffda" flood-opacity="0.2"/>
@@ -440,8 +349,17 @@ const slideData = [
     }
 ];
 
+// Extract the 6 value propositions (exclude introductory slide 1)
+const cardsData = slideData.filter(slide => slide.id !== 1);
+
 // DOM Elements
-const slideCard = document.getElementById("slideCard");
+const dashboardGrid = document.getElementById("dashboardGrid");
+const zoomOverlay = document.getElementById("zoomOverlay");
+const zoomCardContainer = document.getElementById("zoomCard");
+const zoomCloseBtn = document.getElementById("zoomCloseBtn");
+const footerControls = document.getElementById("footerControls");
+const presenterSidebar = document.getElementById("presenterSidebar");
+
 const visualAdviceContent = document.getElementById("visualAdviceContent");
 const slideStatusIndicator = document.getElementById("slideStatusIndicator");
 const progressDotsContainer = document.getElementById("progressDotsContainer");
@@ -454,33 +372,67 @@ const imageLightbox = document.getElementById("imageLightbox");
 const lightboxImage = document.getElementById("lightboxImage");
 const lightboxClose = document.getElementById("lightboxClose");
 
-let currentSlideIndex = 0;
+let activeZoomIndex = null;
 
-// Initialize Progress Dots
+// Initialize Progress Dots (for overlay navigation)
 function initProgressDots() {
     progressDotsContainer.innerHTML = "";
-    slideData.forEach((_, index) => {
+    cardsData.forEach((_, index) => {
         const dot = document.createElement("span");
         dot.className = `dot ${index === 0 ? 'active' : ''}`;
         dot.title = `Go to slide ${index + 1}`;
-        dot.addEventListener("click", () => goToSlide(index));
+        dot.addEventListener("click", () => zoomCard(index));
         progressDotsContainer.appendChild(dot);
     });
 }
 
-// Render the Active Slide
-function renderSlide(index) {
-    const data = slideData[index];
+// Render Dashboard grid list
+function renderDashboard() {
+    dashboardGrid.innerHTML = "";
+    cardsData.forEach((data, index) => {
+        const cardEl = document.createElement("div");
+        cardEl.className = "grid-card";
+        
+        // Show first 2 bullets inside card preview
+        const summaryBullets = data.bullets.slice(0, 2).map(b => `<li>${b}</li>`).join("");
+        
+        cardEl.innerHTML = `
+            <div class="grid-card-info">
+                <span class="grid-card-subtitle">${data.subtitle}</span>
+                <h3 class="grid-card-title">${data.title}</h3>
+                <ul class="grid-card-bullets">
+                    ${summaryBullets}
+                </ul>
+            </div>
+            <div class="grid-card-preview">
+                <div class="mini-visual-graphic">
+                    ${data.visualSvg}
+                </div>
+            </div>
+        `;
+        
+        cardEl.addEventListener("click", () => {
+            zoomCard(index);
+        });
+        
+        dashboardGrid.appendChild(cardEl);
+    });
+}
+
+// Open and Zoom card overlay
+function zoomCard(index) {
+    activeZoomIndex = index;
+    const data = cardsData[index];
     if (!data) return;
 
     // Reset slide entry animations to ensure visibility (transition opacity: 0 to 1)
-    slideCard.classList.remove("active");
-    void slideCard.offsetWidth; // Force layout recalculation
+    zoomCardContainer.classList.remove("active");
+    void zoomCardContainer.offsetWidth; // Force layout recalculation
 
     // Slide html injection
     const bulletsHtml = data.bullets.map(b => `<li>${b}</li>`).join("");
     
-    slideCard.innerHTML = `
+    zoomCardContainer.innerHTML = `
         <div class="slide-content-area">
             <span class="slide-subtitle">${data.subtitle}</span>
             <h2 class="slide-title">${data.title}</h2>
@@ -497,7 +449,7 @@ function renderSlide(index) {
         </div>
     `;
 
-    slideCard.classList.add("active");
+    zoomCardContainer.classList.add("active");
 
     // Update presenter details
     if (data.visualAdvice.trim().startsWith("<")) {
@@ -509,17 +461,18 @@ function renderSlide(index) {
     // Bind click zoom triggers to images inside advice-box
     const imagesInAdvice = visualAdviceContent.querySelectorAll("img");
     imagesInAdvice.forEach(img => {
-        img.addEventListener("click", () => {
+        img.addEventListener("click", (e) => {
+            e.stopPropagation();
             openLightbox(img.src, img.alt);
         });
     });
 
     // Update Status Indicator
-    slideStatusIndicator.textContent = `Slide ${index + 1} / ${slideData.length}`;
+    slideStatusIndicator.textContent = `Capability ${index + 1} / ${cardsData.length}`;
 
     // Update Nav buttons
     prevBtn.disabled = index === 0;
-    nextBtn.disabled = index === slideData.length - 1;
+    nextBtn.disabled = index === cardsData.length - 1;
 
     // Update dots active class
     const dots = progressDotsContainer.querySelectorAll(".dot");
@@ -531,29 +484,41 @@ function renderSlide(index) {
         }
     });
 
-    // Reset slide entry animations
-    const cardEl = slideCard;
-    cardEl.style.animation = 'none';
-    cardEl.offsetHeight; /* trigger reflow */
-    cardEl.style.animation = null;
-}
+    // Show zoomed elements smoothly
+    zoomOverlay.classList.add("show");
+    
+    // Smoothly popup control elements
+    footerControls.classList.remove("hidden");
+    sidebarToggleTab.classList.remove("hidden");
+    togglePresenterBtn.classList.remove("hidden");
 
-function goToSlide(index) {
-    if (index >= 0 && index < slideData.length) {
-        currentSlideIndex = index;
-        renderSlide(currentSlideIndex);
+    // If presenter mode is active, make sure sidebar is expanded
+    if (mainLayout.classList.contains("presenter-mode-active")) {
+        presenterSidebar.classList.remove("hidden");
     }
 }
 
-function nextSlide() {
-    if (currentSlideIndex < slideData.length - 1) {
-        goToSlide(currentSlideIndex + 1);
+// Close Zoom Overlay
+function closeZoom() {
+    activeZoomIndex = null;
+    zoomOverlay.classList.remove("show");
+    
+    // Hide controls smoothly
+    footerControls.classList.add("hidden");
+    sidebarToggleTab.classList.add("hidden");
+    togglePresenterBtn.classList.add("hidden");
+    presenterSidebar.classList.add("hidden");
+}
+
+function nextZoomCard() {
+    if (activeZoomIndex !== null && activeZoomIndex < cardsData.length - 1) {
+        zoomCard(activeZoomIndex + 1);
     }
 }
 
-function prevSlide() {
-    if (currentSlideIndex > 0) {
-        goToSlide(currentSlideIndex - 1);
+function prevZoomCard() {
+    if (activeZoomIndex !== null && activeZoomIndex > 0) {
+        zoomCard(activeZoomIndex - 1);
     }
 }
 
@@ -573,19 +538,37 @@ function togglePresenterMode() {
     if (mainLayout.classList.contains("presenter-mode-active")) {
         mainLayout.classList.remove("presenter-mode-active");
         togglePresenterBtn.classList.remove("active");
+        if (activeZoomIndex === null) {
+            presenterSidebar.classList.add("hidden");
+        }
     } else {
         mainLayout.classList.add("presenter-mode-active");
         togglePresenterBtn.classList.add("active");
+        if (activeZoomIndex !== null) {
+            presenterSidebar.classList.remove("hidden");
+        }
     }
 }
 
 // Event Listeners
-prevBtn.addEventListener("click", prevSlide);
-nextBtn.addEventListener("click", nextSlide);
+prevBtn.addEventListener("click", prevZoomCard);
+nextBtn.addEventListener("click", nextZoomCard);
 togglePresenterBtn.addEventListener("click", togglePresenterMode);
 
 if (sidebarToggleTab) {
     sidebarToggleTab.addEventListener("click", togglePresenterMode);
+}
+
+if (zoomCloseBtn) {
+    zoomCloseBtn.addEventListener("click", closeZoom);
+}
+
+if (zoomOverlay) {
+    zoomOverlay.addEventListener("click", (e) => {
+        if (e.target === zoomOverlay) {
+            closeZoom();
+        }
+    });
 }
 
 if (lightboxClose) {
@@ -602,22 +585,29 @@ if (imageLightbox) {
 
 // Keybindings
 document.addEventListener("keydown", (e) => {
-    // Navigation keys
-    if (e.key === "ArrowRight" || e.key === "Space") {
-        e.preventDefault();
-        nextSlide();
-    } else if (e.key === "ArrowLeft") {
-        e.preventDefault();
-        prevSlide();
+    if (activeZoomIndex !== null) {
+        // Navigation keys inside zoom overlay
+        if (e.key === "ArrowRight" || e.key === "Space") {
+            e.preventDefault();
+            nextZoomCard();
+        } else if (e.key === "ArrowLeft") {
+            e.preventDefault();
+            prevZoomCard();
+        }
+        // Presenter mode toggle key
+        if (e.key.toLowerCase() === "p") {
+            e.preventDefault();
+            togglePresenterMode();
+        }
     }
-    // Presenter mode toggle key
-    if (e.key.toLowerCase() === "p") {
-        e.preventDefault();
-        togglePresenterMode();
-    }
-    // Lightbox escape key
+    
+    // Lightbox escape key or close zoom on Escape
     if (e.key === "Escape") {
-        closeLightbox();
+        if (imageLightbox.classList.contains("show")) {
+            closeLightbox();
+        } else if (activeZoomIndex !== null) {
+            closeZoom();
+        }
     }
 });
 
@@ -630,5 +620,6 @@ document.querySelectorAll(".collapsible-section .section-title").forEach(title =
 });
 
 // Initialization
+renderDashboard();
 initProgressDots();
-renderSlide(currentSlideIndex);
+closeZoom(); // Start with zoomed overlays hidden

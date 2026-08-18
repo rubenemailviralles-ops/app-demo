@@ -19,31 +19,37 @@
             <span class="badge">Capabilities</span>
         </div>
         <div class="header-controls">
-            <button id="togglePresenterBtn" class="control-btn toggle-presenter-btn" title="Toggle Presenter Mode (P)">
+            <!-- Presenter Mode button hidden by default (appears smoothly when zoomed in) -->
+            <button id="togglePresenterBtn" class="control-btn toggle-presenter-btn hidden" title="Toggle Presenter Mode (P)">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
                 <span>Presenter Mode</span>
             </button>
         </div>
     </header>
 
-    <!-- Main Content Grid -->
-    <main class="presentation-container presenter-mode-active" id="mainLayout">
-        <!-- Slide View (Left Pane) -->
-        <section class="slide-pane">
-            <div class="slide-card-wrapper">
-                <div class="slide-card" id="slideCard">
-                    <!-- Slide content injected here by JavaScript -->
-                </div>
+    <!-- Main Content Container -->
+    <main class="presentation-container" id="mainLayout">
+        <!-- Landing Dashboard View -->
+        <section class="dashboard-pane" id="dashboardPane">
+            <div class="dashboard-header-block">
+                <span class="dash-subtitle">Technical Capabilities & Valuation Report</span>
+                <h1 class="dash-title">Dispensary Management & Logistics System</h1>
+                <p class="dash-desc">A high-performance single-page platform built on React (TypeScript), Vite, and Supabase featuring offline fallback engines, multi-layered discount configurations, predictive analysis, and system security lockouts.</p>
+            </div>
+            
+            <!-- 6 grid card items -->
+            <div class="dashboard-grid" id="dashboardGrid">
+                <!-- Injected dynamically by app.js -->
             </div>
         </section>
 
-        <!-- Sidebar Toggle Tab attached to the sidebar edge -->
-        <button id="sidebarToggleTab" class="sidebar-toggle-tab" title="Toggle Presenter Desk (P)">
+        <!-- Sidebar Toggle Tab (hidden by default) -->
+        <button id="sidebarToggleTab" class="sidebar-toggle-tab hidden" title="Toggle Presenter Desk (P)">
             <svg id="tabArrowIcon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
         </button>
 
-        <!-- Presenter Panel (Right Pane) -->
-        <aside class="presenter-sidebar" id="presenterSidebar">
+        <!-- Presenter Panel (Right Pane - hidden by default) -->
+        <aside class="presenter-sidebar hidden" id="presenterSidebar">
             <div class="sidebar-content" id="sidebarContentWrapper">
                 <div class="advice-section collapsible-section active">
                     <h4 class="section-title">
@@ -58,12 +64,22 @@
                 </div>
             </div>
         </aside>
+
+        <!-- Zoom Overlay Modal (Contains zoomed card details) -->
+        <div id="zoomOverlay" class="zoom-overlay">
+            <div class="zoomed-card-container">
+                <button class="zoom-close-btn" id="zoomCloseBtn" title="Close Overlay (Esc)">&times;</button>
+                <div class="slide-card" id="zoomCard">
+                    <!-- Zoomed card content injected here -->
+                </div>
+            </div>
+        </div>
     </main>
 
-    <!-- Footer Controls -->
-    <footer class="footer-controls">
+    <!-- Footer Controls (hidden by default, appears when zoomed in) -->
+    <footer class="footer-controls hidden" id="footerControls">
         <div class="keyboard-legend">
-            <span>Use <kbd>←</kbd> <kbd>→</kbd> or <kbd>Space</kbd> to navigate</span>
+            <span>Use <kbd>←</kbd> <kbd>→</kbd> or <kbd>Space</kbd> to cycle zoomed cards</span>
         </div>
 
         <div class="slide-navigation">
@@ -81,7 +97,7 @@
         </div>
 
         <div class="quick-status">
-            <span id="slideStatusIndicator">Slide 1 / 7</span>
+            <span id="slideStatusIndicator">Slide 1 / 6</span>
         </div>
     </footer>
 

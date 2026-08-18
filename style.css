@@ -750,3 +750,246 @@ kbd {
     image-rendering: crisp-edges;
     -ms-interpolation-mode: nearest-neighbor;
 }
+
+/* Dashboard Pane & Header Layout */
+.dashboard-pane {
+    padding: 3rem 2.5rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    height: 100%;
+}
+
+.dashboard-header-block {
+    margin-bottom: 2.5rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1.5rem;
+}
+
+.dash-subtitle {
+    color: var(--primary);
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.dash-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 0.75rem;
+    background: linear-gradient(135deg, #ffffff, #d1d5db);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.dash-desc {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    max-width: 950px;
+}
+
+/* Dashboard Grid & Card styling */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.grid-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    backdrop-filter: var(--glass-blur);
+    position: relative;
+    overflow: hidden;
+    height: 290px;
+}
+
+.grid-card:hover {
+    border-color: var(--primary);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(100, 255, 218, 0.06), inset 0 0 20px rgba(255, 255, 255, 0.02);
+}
+
+.grid-card-subtitle {
+    color: var(--secondary);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.grid-card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: #ffffff;
+}
+
+.grid-card-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.grid-card-bullets li {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+    padding-left: 1rem;
+    position: relative;
+}
+
+.grid-card-bullets li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.45rem;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--secondary);
+    box-shadow: 0 0 5px var(--secondary);
+}
+
+.grid-card-preview {
+    width: 100%;
+    height: 90px;
+    margin-top: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.75;
+    transition: var(--transition-smooth);
+}
+
+.grid-card:hover .grid-card-preview {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.mini-visual-graphic {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mini-visual-graphic svg {
+    max-height: 80px;
+    width: 100%;
+    overflow: visible;
+}
+
+/* Zoom Overlay and Modal styling */
+.zoom-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(8, 10, 14, 0.85);
+    backdrop-filter: var(--glass-blur);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: var(--transition-smooth);
+}
+
+.zoom-overlay.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.zoomed-card-container {
+    width: 90%;
+    max-width: 1100px;
+    height: 80%;
+    max-height: 600px;
+    position: relative;
+}
+
+.zoom-close-btn {
+    position: absolute;
+    top: -3.5rem;
+    right: 0;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 3rem;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    line-height: 1;
+}
+
+.zoom-close-btn:hover {
+    color: var(--accent);
+    transform: scale(1.1);
+}
+
+/* Dynamic popup button controls and hidden classes */
+.hidden {
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transform: translateY(-10px) scale(0.95);
+}
+
+/* Refined transitions for popping up elements smoothly */
+#sidebarToggleTab {
+    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s, border-color 0.3s !important;
+}
+
+#sidebarToggleTab.hidden {
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transform: translateY(-50%) translateX(20px) scale(0.8) !important;
+}
+
+#togglePresenterBtn {
+    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s, border-color 0.3s !important;
+}
+
+#togglePresenterBtn.hidden {
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transform: translateY(-10px) scale(0.9) !important;
+}
+
+#footerControls {
+    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+#footerControls.hidden {
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transform: translateY(20px) !important;
+}
+
+.presenter-sidebar.hidden {
+    display: none !important;
+}
+
+/* Adjust grid template columns if sidebar is hidden (e.g. on landing page) */
+.presentation-container:has(.presenter-sidebar.hidden) {
+    grid-template-columns: 1fr 0px !important;
+}
