@@ -797,10 +797,22 @@ kbd {
 /* Dashboard Grid & Card styling */
 .dashboard-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(3, 1fr); /* 3 cards next to each other */
     gap: 2rem;
     width: 100%;
     margin-bottom: 2rem;
+}
+
+@media (max-width: 990px) {
+    .dashboard-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 650px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .grid-card {
@@ -816,13 +828,13 @@ kbd {
     backdrop-filter: var(--glass-blur);
     position: relative;
     overflow: hidden;
-    height: 290px;
+    height: 310px;
 }
 
 .grid-card:hover {
     border-color: var(--primary);
-    transform: translateY(-4px);
-    box-shadow: 0 12px 30px rgba(100, 255, 218, 0.06), inset 0 0 20px rgba(255, 255, 255, 0.02);
+    transform: scale(1.04) translateY(-4px); /* Zoom-in scale effect on hover */
+    box-shadow: 0 15px 40px rgba(100, 255, 218, 0.12), inset 0 0 20px rgba(255, 255, 255, 0.02);
 }
 
 .grid-card-subtitle {
@@ -842,37 +854,10 @@ kbd {
     color: #ffffff;
 }
 
-.grid-card-bullets {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.grid-card-bullets li {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    line-height: 1.4;
-    padding-left: 1rem;
-    position: relative;
-}
-
-.grid-card-bullets li::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0.45rem;
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: var(--secondary);
-    box-shadow: 0 0 5px var(--secondary);
-}
-
 .grid-card-preview {
     width: 100%;
-    height: 90px;
-    margin-top: 1.5rem;
+    flex: 1; /* Stretch to fill card space */
+    margin-top: 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -928,6 +913,14 @@ kbd {
     height: 80%;
     max-height: 600px;
     position: relative;
+    transform: scale(0.5) translateY(50px);
+    opacity: 0;
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.5s ease;
+}
+
+.zoom-overlay.show .zoomed-card-container {
+    transform: scale(1) translateY(0);
+    opacity: 1;
 }
 
 .zoom-close-btn {

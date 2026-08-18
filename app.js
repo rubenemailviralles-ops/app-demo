@@ -393,16 +393,10 @@ function renderDashboard() {
         const cardEl = document.createElement("div");
         cardEl.className = "grid-card";
         
-        // Show first 2 bullets inside card preview
-        const summaryBullets = data.bullets.slice(0, 2).map(b => `<li>${b}</li>`).join("");
-        
         cardEl.innerHTML = `
             <div class="grid-card-info">
                 <span class="grid-card-subtitle">${data.subtitle}</span>
                 <h3 class="grid-card-title">${data.title}</h3>
-                <ul class="grid-card-bullets">
-                    ${summaryBullets}
-                </ul>
             </div>
             <div class="grid-card-preview">
                 <div class="mini-visual-graphic">
