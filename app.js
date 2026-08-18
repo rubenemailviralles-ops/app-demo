@@ -3,13 +3,13 @@ const slideData = [
     {
         id: 1,
         subtitle: "Vision & Value Proposition",
-        title: "Smoking Goblin: Advanced Dispensary Management",
+        title: "Dispensary Management & Logistics System",
         bullets: [
             "<strong>High-Performance SPA:</strong> Responsive single-page app built on React, TypeScript, Vite, and Supabase.",
             "<strong>Local-First Fallback:</strong> Active local storage synchronization ensures continuous offline functionality.",
-            "<strong>Dispensary & Logistics Core:</strong> Integrated security, inventory tracking, and loyalty controls in one system."
+            "<strong>System Core Capabilities:</strong> Integrated security, inventory tracking, and loyalty controls in one system."
         ],
-        visualName: "Smoking Goblin Core Concept",
+        visualName: "System Core Concept",
         visualAdvice: `<img src="vision_graphic.png" style="width: 100%; border-radius: 8px; border: 1px solid var(--border-color); box-shadow: 0 4px 15px rgba(0,0,0,0.5);" alt="Active Till Center Graphic Suggestion">`,
         visualSvg: `
             <svg class="placeholder-svg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -86,7 +86,7 @@ const slideData = [
             </svg>
         `,
         script: `
-            <p><strong>Script:</strong> "Welcome to the Smoking Goblin Dispensary Management & Logistics System. Modern operations demand high-performance architectures combined with smart, local-first offline support.</p>
+            <p><strong>Script:</strong> "Welcome to the Dispensary Management & Logistics System. Modern operations demand high-performance architectures combined with smart, local-first offline support.</p>
             <p>Today, we present a system built on React, TypeScript, Vite, and Supabase that handles reception, POS till, automated calculations, and compliance logistics inside a single unified portal."</p>
         `
     },
@@ -158,7 +158,7 @@ const slideData = [
             </svg>
         `,
         script: `
-            <p><strong>Script:</strong> "Secure check-in is the first line of defense. The Smoking Goblin portal employs passcode protection for members and staff.</p>
+            <p><strong>Script:</strong> "Secure check-in is the first line of defense. The portal employs passcode protection for members and staff.</p>
             <p>Based on the staff code inputted, the workspace dynamically structures itself—offering owners financial settings, budtenders standard till views, and members their private registry profile."</p>
         `
     },
@@ -172,7 +172,7 @@ const slideData = [
             "<strong>Category Campaign Engine:</strong> Easily manage custom categories with automatic 'Uncategorized' reassignment."
         ],
         visualName: "Active Stock & POS Grid",
-        visualAdvice: `<img src="vision_graphic.png" style="width: 100%; border-radius: 8px; border: 1px solid var(--border-color); box-shadow: 0 4px 15px rgba(0,0,0,0.5);" alt="Smoking Goblin Till Center POS Screenshot">`,
+        visualAdvice: `<img src="vision_graphic.png" style="width: 100%; border-radius: 8px; border: 1px solid var(--border-color); box-shadow: 0 4px 15px rgba(0,0,0,0.5);" alt="Till Center POS Screenshot">`,
         visualSvg: `
             <svg class="placeholder-svg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <!-- Grid background representing items catalog -->
@@ -439,3 +439,190 @@ const slideData = [
         `
     }
 ];
+
+// DOM Elements
+const slideCard = document.getElementById("slideCard");
+const visualAdviceContent = document.getElementById("visualAdviceContent");
+const slideStatusIndicator = document.getElementById("slideStatusIndicator");
+const progressDotsContainer = document.getElementById("progressDotsContainer");
+const togglePresenterBtn = document.getElementById("togglePresenterBtn");
+const mainLayout = document.getElementById("mainLayout");
+const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
+const sidebarToggleTab = document.getElementById("sidebarToggleTab");
+const imageLightbox = document.getElementById("imageLightbox");
+const lightboxImage = document.getElementById("lightboxImage");
+const lightboxClose = document.getElementById("lightboxClose");
+
+let currentSlideIndex = 0;
+
+// Initialize Progress Dots
+function initProgressDots() {
+    progressDotsContainer.innerHTML = "";
+    slideData.forEach((_, index) => {
+        const dot = document.createElement("span");
+        dot.className = `progress-dot ${index === 0 ? 'active' : ''}`;
+        dot.title = `Go to slide ${index + 1}`;
+        dot.addEventListener("click", () => goToSlide(index));
+        progressDotsContainer.appendChild(dot);
+    });
+}
+
+// Render the Active Slide
+function renderSlide(index) {
+    const data = slideData[index];
+    if (!data) return;
+
+    // Slide html injection
+    const bulletsHtml = data.bullets.map(b => `<li>${b}</li>`).join("");
+    
+    slideCard.innerHTML = `
+        <div class="slide-content-area">
+            <span class="slide-subtitle">${data.subtitle}</span>
+            <h2 class="slide-title">${data.title}</h2>
+            <ul class="slide-bullets">
+                ${bulletsHtml}
+            </ul>
+        </div>
+        <div class="slide-visual-panel">
+            <div class="visual-container">
+                <div class="visual-graphic">
+                    ${data.visualSvg}
+                </div>
+            </div>
+        </div>
+    `;
+
+    // Update presenter details
+    if (data.visualAdvice.trim().startsWith("<")) {
+        visualAdviceContent.innerHTML = data.visualAdvice;
+    } else {
+        visualAdviceContent.innerHTML = `<p>${data.visualAdvice}</p>`;
+    }
+
+    // Bind click zoom triggers to images inside advice-box
+    const imagesInAdvice = visualAdviceContent.querySelectorAll("img");
+    imagesInAdvice.forEach(img => {
+        img.addEventListener("click", () => {
+            openLightbox(img.src, img.alt);
+        });
+    });
+
+    // Update Status Indicator
+    slideStatusIndicator.textContent = `Slide ${index + 1} / ${slideData.length}`;
+
+    // Update Nav buttons
+    prevBtn.disabled = index === 0;
+    nextBtn.disabled = index === slideData.length - 1;
+
+    // Update dots active class
+    const dots = progressDotsContainer.querySelectorAll(".progress-dot");
+    dots.forEach((dot, dotIdx) => {
+        if (dotIdx === index) {
+            dot.classList.add("active");
+        } else {
+            dot.classList.remove("active");
+        }
+    });
+
+    // Reset slide entry animations
+    const cardEl = slideCard;
+    cardEl.style.animation = 'none';
+    cardEl.offsetHeight; /* trigger reflow */
+    cardEl.style.animation = null;
+}
+
+function goToSlide(index) {
+    if (index >= 0 && index < slideData.length) {
+        currentSlideIndex = index;
+        renderSlide(currentSlideIndex);
+    }
+}
+
+function nextSlide() {
+    if (currentSlideIndex < slideData.length - 1) {
+        goToSlide(currentSlideIndex + 1);
+    }
+}
+
+function prevSlide() {
+    if (currentSlideIndex > 0) {
+        goToSlide(currentSlideIndex - 1);
+    }
+}
+
+// Lightbox functions
+function openLightbox(src, alt) {
+    lightboxImage.src = src;
+    lightboxImage.alt = alt || "Enlarged Visual Preview";
+    imageLightbox.classList.add("show");
+}
+
+function closeLightbox() {
+    imageLightbox.classList.remove("show");
+}
+
+// Presenter mode toggle
+function togglePresenterMode() {
+    if (mainLayout.classList.contains("presenter-mode-active")) {
+        mainLayout.classList.remove("presenter-mode-active");
+        togglePresenterBtn.classList.remove("active");
+    } else {
+        mainLayout.classList.add("presenter-mode-active");
+        togglePresenterBtn.classList.add("active");
+    }
+}
+
+// Event Listeners
+prevBtn.addEventListener("click", prevSlide);
+nextBtn.addEventListener("click", nextSlide);
+togglePresenterBtn.addEventListener("click", togglePresenterMode);
+
+if (sidebarToggleTab) {
+    sidebarToggleTab.addEventListener("click", togglePresenterMode);
+}
+
+if (lightboxClose) {
+    lightboxClose.addEventListener("click", closeLightbox);
+}
+
+if (imageLightbox) {
+    imageLightbox.addEventListener("click", (e) => {
+        if (e.target === imageLightbox || e.target === lightboxImage || e.target === lightboxClose) {
+            closeLightbox();
+        }
+    });
+}
+
+// Keybindings
+document.addEventListener("keydown", (e) => {
+    // Navigation keys
+    if (e.key === "ArrowRight" || e.key === "Space") {
+        e.preventDefault();
+        nextSlide();
+    } else if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        prevSlide();
+    }
+    // Presenter mode toggle key
+    if (e.key.toLowerCase() === "p") {
+        e.preventDefault();
+        togglePresenterMode();
+    }
+    // Lightbox escape key
+    if (e.key === "Escape") {
+        closeLightbox();
+    }
+});
+
+// Accordion collapsible behavior for sidebar sections
+document.querySelectorAll(".collapsible-section .section-title").forEach(title => {
+    title.addEventListener("click", () => {
+        const parent = title.parentElement;
+        parent.classList.toggle("active");
+    });
+});
+
+// Initialization
+initProgressDots();
+renderSlide(currentSlideIndex);
