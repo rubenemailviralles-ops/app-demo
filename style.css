@@ -686,13 +686,6 @@ kbd {
         padding-right: 2.25rem !important; /* Prevent text overlap with close button */
     }
     
-    .visual-graphic svg {
-        width: 100% !important;
-        height: auto !important;
-        max-width: 100% !important;
-        max-height: 300px !important; /* Cap vertical scaling to avoid overflows */
-    }
-    
     .slide-pane {
         padding: 1rem;
         height: auto;
