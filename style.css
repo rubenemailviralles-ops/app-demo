@@ -1554,7 +1554,6 @@ kbd {
     }
 }
 
-/* Seamless Customization Banner Row */
 .customization-banner {
     display: flex;
     flex-direction: column; /* Vertical layout formatting */
@@ -1571,6 +1570,7 @@ kbd {
     margin-left: -1.5rem;
     margin-right: -1.5rem;
     width: calc(100% + 3rem);
+    flex-shrink: 0; /* Prevent visual overlapping under flex constraints */
 }
 
 .banner-header {
@@ -1733,6 +1733,7 @@ kbd {
     margin-left: -1.5rem;
     margin-right: -1.5rem;
     width: calc(100% + 3rem);
+    flex-shrink: 0; /* Prevent visual overlapping under flex constraints */
 }
 
 .integration-svg {
