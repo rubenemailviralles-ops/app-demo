@@ -1561,8 +1561,7 @@ kbd {
     justify-content: center;
     align-items: center; /* Center horizontally */
     padding: 2.25rem 2.5rem;
-    gap: 1.25rem;
-    margin-top: 3.5rem;
+    margin-top: 4rem; /* Spacious top margin separating from the grid cards above */
     border-top: 1px solid var(--border-color);
     background: rgba(255, 255, 255, 0.015);
     min-height: 220px;
@@ -1577,6 +1576,7 @@ kbd {
 .banner-header {
     width: 100%;
     text-align: center;
+    margin-bottom: 0.5rem; /* Group title close to its picture underneath */
 }
 
 .banner-badge {
@@ -1611,6 +1611,7 @@ kbd {
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+    margin-bottom: 1.5rem; /* Spacious margins pushing description copy down */
 }
 
 .branding-svg {
@@ -1667,9 +1668,12 @@ kbd {
         margin-right: -1.5rem !important;
         width: calc(100% + 3rem) !important;
         padding: 1.75rem 1.5rem !important;
-        gap: 1.25rem !important;
+        gap: 0 !important; /* Reset general gap */
         min-height: 180px !important;
-        margin-top: 2.5rem !important; /* Spacious separation to prevent overlap */
+        margin-top: 3.5rem !important; /* Spacious separation to prevent overlap */
+    }
+    .banner-header {
+        margin-bottom: 0.4rem !important; /* Group title close to its picture underneath */
     }
     .banner-title {
         font-size: 1.25rem !important;
@@ -1680,6 +1684,7 @@ kbd {
     .banner-visual {
         width: 260px !important; /* Enlarged tablet visual */
         height: 210px !important;
+        margin-bottom: 1rem !important;
     }
 }
 
@@ -1689,9 +1694,12 @@ kbd {
         margin-right: -1rem !important;
         width: calc(100% + 2rem) !important;
         padding: 1.5rem 1rem !important;
-        gap: 1rem !important;
+        gap: 0 !important; /* Reset general gap */
         min-height: 150px !important;
-        margin-top: 2rem !important; /* Separation on mobile */
+        margin-top: 3rem !important; /* Separation on mobile */
+    }
+    .banner-header {
+        margin-bottom: 0.3rem !important; /* Group title close to its picture underneath */
     }
     .banner-title {
         font-size: 1.1rem !important;
@@ -1704,5 +1712,6 @@ kbd {
     .banner-visual {
         width: 200px !important; /* Enlarged mobile visual */
         height: 160px !important;
+        margin-bottom: 0.75rem !important;
     }
 }
