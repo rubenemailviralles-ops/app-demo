@@ -1715,3 +1715,93 @@ kbd {
         margin-bottom: 0.75rem !important;
     }
 }
+
+/* Seamless Integration Banner Row (POS Terminal Integration) */
+.integration-banner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2.25rem 2.5rem;
+    margin-top: 4rem; /* Separation from banner above */
+    border-top: 1px solid var(--border-color);
+    background: rgba(255, 255, 255, 0.01); /* Subtle dark container tint */
+    min-height: 220px;
+    position: relative;
+    text-align: center;
+    /* Full bleed stretching end-to-end */
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+    width: calc(100% + 3rem);
+}
+
+.integration-svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+/* POS Terminal Sync Wave Animations */
+.card-group {
+    animation: integCardInsert 3.2s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+}
+
+@keyframes integCardInsert {
+    0%, 100% { transform: translateY(0); }
+    30%, 70% { transform: translateY(22px); } /* Slide card into reader slot */
+}
+
+.sync-waves circle {
+    transform-origin: 60px 30px;
+}
+
+.wave-1 {
+    animation: integWavePulse 2.2s linear infinite;
+}
+
+.wave-2 {
+    animation: integWavePulse 2.2s linear infinite;
+    animation-delay: 0.9s;
+}
+
+@keyframes integWavePulse {
+    0% { r: 6px; opacity: 0; }
+    15% { opacity: 0.6; }
+    80% { opacity: 0.8; }
+    100% { r: 26px; opacity: 0; }
+}
+
+.terminal-group {
+    transform-origin: 60px 65px;
+    animation: integTerminalFloat 6s ease-in-out infinite alternate;
+}
+
+@keyframes integTerminalFloat {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-2px); }
+}
+
+/* Responsive Integration Banner overrides */
+@media (max-width: 1024px) {
+    .integration-banner {
+        margin-left: -1.5rem !important;
+        margin-right: -1.5rem !important;
+        width: calc(100% + 3rem) !important;
+        padding: 1.75rem 1.5rem !important;
+        gap: 0 !important;
+        min-height: 180px !important;
+        margin-top: 3.5rem !important;
+    }
+}
+
+@media (max-width: 600px) {
+    .integration-banner {
+        margin-left: -1rem !important;
+        margin-right: -1rem !important;
+        width: calc(100% + 2rem) !important;
+        padding: 1.5rem 1rem !important;
+        gap: 0 !important;
+        min-height: 150px !important;
+        margin-top: 3rem !important;
+    }
+}

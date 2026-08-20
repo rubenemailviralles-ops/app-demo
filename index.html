@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=1.3.3">
+    <link rel="stylesheet" href="style.css?v=1.3.4">
 </head>
 <body class="dark-theme">
     <!-- Header -->
@@ -76,6 +76,65 @@
                     </svg>
                 </div>
                 <p class="banner-desc">Tailor interface logos, accent color palettes, check-in requirements, loyalty levels, and functional parameters to match your dispensary's unique brand identity.</p>
+            </div>
+
+            <!-- Seamless full-width integration banner -->
+            <div class="integration-banner">
+                <div class="banner-header">
+                    <h2 class="banner-title">Easily Integrable with POS & Payment Systems</h2>
+                </div>
+                <div class="banner-visual">
+                    <svg class="integration-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Connecting sync lines -->
+                        <path d="M20 60 H100" stroke="rgba(255,255,255,0.06)" stroke-width="2" stroke-dasharray="5,5"/>
+                        <circle cx="20" cy="60" r="3" fill="#64ffda" opacity="0.3"/>
+                        <circle cx="100" cy="60" r="3" fill="#00b4d8" opacity="0.3"/>
+                        <!-- Wireless sync waves -->
+                        <g class="sync-waves">
+                            <circle cx="60" cy="30" r="10" fill="none" stroke="#64ffda" stroke-width="1.5" class="wave-1" opacity="0"/>
+                            <circle cx="60" cy="30" r="16" fill="none" stroke="#64ffda" stroke-width="1.5" class="wave-2" opacity="0"/>
+                        </g>
+                        <!-- Sleek POS terminal body -->
+                        <g class="terminal-group">
+                            <rect x="42" y="38" width="36" height="54" rx="6" fill="#0d1118" stroke="url(#integNeonGrad)" stroke-width="1.5" filter="url(#glowIntegCard)"/>
+                            <!-- Terminal screen -->
+                            <rect x="47" y="44" width="26" height="16" rx="2" fill="#131720" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+                            <text x="60" y="54" fill="#64ffda" font-size="3" font-family="'Outfit', sans-serif" font-weight="700" text-anchor="middle" letter-spacing="0.05em" class="terminal-text">POS ACTIVE</text>
+                            <!-- Terminal keypad lines -->
+                            <rect x="48" y="66" width="6" height="4" rx="1" fill="rgba(255,255,255,0.1)"/>
+                            <rect x="57" y="66" width="6" height="4" rx="1" fill="rgba(255,255,255,0.1)"/>
+                            <rect x="66" y="66" width="6" height="4" rx="1" fill="rgba(255,255,255,0.1)"/>
+                            
+                            <rect x="48" y="73" width="6" height="4" rx="1" fill="rgba(255,255,255,0.1)"/>
+                            <rect x="57" y="73" width="6" height="4" rx="1" fill="rgba(255,255,255,0.1)"/>
+                            <rect x="66" y="73" width="6" height="4" rx="1" fill="rgba(255,255,255,0.1)"/>
+                            
+                            <rect x="48" y="80" width="6" height="4" rx="1" fill="#ff5d5d" opacity="0.8"/>
+                            <rect x="57" y="80" width="6" height="4" rx="1" fill="rgba(255,255,255,0.1)"/>
+                            <rect x="66" y="80" width="6" height="4" rx="1" fill="#64ffda" opacity="0.8"/>
+                        </g>
+                        <!-- Credit Card sliding in -->
+                        <g class="card-group">
+                            <rect x="48" y="16" width="24" height="15" rx="2" fill="url(#cardGrad)" stroke="rgba(255,255,255,0.3)" stroke-width="0.75"/>
+                            <rect x="51" y="20" width="4" height="3" rx="0.5" fill="#ffb703"/> <!-- Chip -->
+                            <line x1="48" y1="26" x2="72" y2="26" stroke="#131720" stroke-width="2"/> <!-- Magnetic stripe -->
+                        </g>
+                        <defs>
+                            <linearGradient id="integNeonGrad" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%" stop-color="#00b4d8"/>
+                                <stop offset="100%" stop-color="#64ffda"/>
+                            </linearGradient>
+                            <linearGradient id="cardGrad" x1="0" y1="0" x2="1" y2="1">
+                                <stop offset="0%" stop-color="#9d4edd"/>
+                                <stop offset="100%" stop-color="#f72585"/>
+                            </linearGradient>
+                            <filter id="glowIntegCard" x="-10%" y="-10%" width="120%" height="120%">
+                                <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#00b4d8" flood-opacity="0.25"/>
+                            </filter>
+                        </defs>
+                    </svg>
+                </div>
+                <p class="banner-desc">Sync seamlessly with point-of-sale card terminals, digital card readers, and payment gateway APIs to consolidate store audits and verify retail transactions.</p>
             </div>
         </section>
 
@@ -187,6 +246,6 @@
     </div>
 
     <!-- Interactive JS code -->
-    <script src="app.js?v=1.3.3"></script>
+    <script src="app.js?v=1.3.4"></script>
 </body>
 </html>
