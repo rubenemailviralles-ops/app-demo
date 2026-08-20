@@ -119,6 +119,10 @@ h1, h2, h3, h4, h5, h6 {
     -webkit-text-fill-color: transparent;
 }
 
+.logo-br {
+    display: none;
+}
+
 .badge {
     background: rgba(100, 255, 218, 0.1);
     color: var(--primary);
@@ -655,6 +659,10 @@ kbd {
     
     .logo-text {
         font-size: 1.1rem !important;
+    }
+    
+    .logo-br {
+        display: block !important;
     }
     
     .live-app-btn {
