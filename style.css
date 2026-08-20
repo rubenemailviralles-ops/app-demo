@@ -1562,7 +1562,7 @@ kbd {
     align-items: center; /* Center horizontally */
     padding: 2.25rem 2.5rem;
     gap: 1.25rem;
-    margin-top: 1rem;
+    margin-top: 3.5rem;
     border-top: 1px solid var(--border-color);
     background: rgba(255, 255, 255, 0.015);
     min-height: 220px;
@@ -1669,6 +1669,7 @@ kbd {
         padding: 1.75rem 1.5rem !important;
         gap: 1.25rem !important;
         min-height: 180px !important;
+        margin-top: 2.5rem !important; /* Spacious separation to prevent overlap */
     }
     .banner-title {
         font-size: 1.25rem !important;
@@ -1690,6 +1691,7 @@ kbd {
         padding: 1.5rem 1rem !important;
         gap: 1rem !important;
         min-height: 150px !important;
+        margin-top: 2rem !important; /* Separation on mobile */
     }
     .banner-title {
         font-size: 1.1rem !important;
