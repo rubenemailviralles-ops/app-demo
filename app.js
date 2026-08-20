@@ -423,7 +423,30 @@ function zoomCard(index) {
     void zoomCardContainer.offsetWidth; // Force layout recalculation
 
     // Slide html injection
-    const bulletsHtml = data.bullets.map(b => `<li>${b}</li>`).join("");
+    // Bullet html parser and generation
+    const bulletsHtml = data.bullets.map((b, idx) => {
+        const strongMatch = b.match(/<strong>(.*?)<\/strong>/);
+        let title = "";
+        let desc = b;
+        if (strongMatch) {
+            title = strongMatch[1].replace(/:$/, "").trim();
+            desc = b.replace(strongMatch[0], "").trim();
+            if (desc.startsWith(":")) {
+                desc = desc.substring(1).trim();
+            }
+        }
+        return `
+            <li class="collapsible-bullet" style="--anim-delay: ${0.32 + idx * 0.1}s">
+                <div class="bullet-trigger">
+                    <span class="bullet-arrow">▼</span>
+                    <strong>${title}:</strong>
+                </div>
+                <div class="bullet-content">
+                    <p>${desc}</p>
+                </div>
+            </li>
+        `;
+    }).join("");
     
     zoomCardContainer.innerHTML = `
         <div class="slide-content-area">
@@ -441,6 +464,19 @@ function zoomCard(index) {
             </div>
         </div>
     `;
+
+    // Add interactive click listeners for collapsible bullet menu triggers on mobile/tablet viewports
+    const triggers = zoomCardContainer.querySelectorAll('.bullet-trigger');
+    triggers.forEach(trig => {
+        trig.addEventListener('click', () => {
+            if (window.innerWidth <= 1024) {
+                const parentLi = trig.closest('.collapsible-bullet');
+                if (parentLi) {
+                    parentLi.classList.toggle('active');
+                }
+            }
+        });
+    });
 
     zoomCardContainer.classList.add("active");
 
