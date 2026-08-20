@@ -673,11 +673,12 @@ kbd {
     }
     
     .slide-card {
-        grid-template-columns: 1fr;
-        max-height: 90%;
-        height: auto;
-        gap: 1rem;
-        padding: 1.5rem;
+        grid-template-columns: 1fr !important;
+        max-height: 85vh !important;
+        height: auto !important;
+        gap: 1.25rem !important;
+        padding: 1.5rem !important;
+        overflow-y: auto !important; /* Enable scrolling inside the popup card on mobile/tablet viewports */
     }
     
     .slide-pane {
