@@ -266,6 +266,10 @@ h1, h2, h3, h4, h5, h6 {
     display: inline;
 }
 
+.bullet-trigger strong::after {
+    content: ':'; /* Append colon on desktop PC for standard reading list */
+}
+
 .bullet-content {
     display: inline;
 }
@@ -724,19 +728,28 @@ kbd {
     .bullet-trigger {
         display: flex !important;
         align-items: center;
-        justify-content: space-between;
-        padding: 0.75rem 1rem;
+        justify-content: center !important; /* Center the title horizontally */
+        padding: 0.75rem 2.5rem 0.75rem 1rem !important; /* Leave room for absolute arrow on right */
         cursor: pointer;
         user-select: none;
+        position: relative !important;
     }
     
     .bullet-trigger strong {
         font-size: 0.88rem;
         color: #ffffff;
     }
+
+    .bullet-trigger strong::after {
+        content: '' !important; /* Remove pseudo colon on mobile and tablet */
+    }
     
     .bullet-arrow {
         display: block !important;
+        position: absolute !important;
+        right: 1.25rem !important; /* Anchored absolutely on the right */
+        top: 50% !important;
+        transform: translateY(-50%) !important;
         font-size: 0.7rem;
         color: var(--primary);
         transition: transform 0.25s ease;
@@ -756,6 +769,7 @@ kbd {
         color: var(--text-muted);
         line-height: 1.45;
         margin: 0 0 0.75rem 0 !important;
+        text-align: center !important; /* Center details text as well for symmetry! */
     }
     
     .collapsible-bullet.active {
@@ -769,7 +783,7 @@ kbd {
     }
     
     .collapsible-bullet.active .bullet-arrow {
-        transform: rotate(180deg);
+        transform: translateY(-50%) rotate(180deg) !important; /* Keep center vertical alignment during rotate */
     }
     
     .slide-card {

@@ -438,8 +438,8 @@ function zoomCard(index) {
         return `
             <li class="collapsible-bullet" style="--anim-delay: ${0.32 + idx * 0.1}s">
                 <div class="bullet-trigger">
+                    <strong>${title}</strong>
                     <span class="bullet-arrow">▼</span>
-                    <strong>${title}:</strong>
                 </div>
                 <div class="bullet-content">
                     <p>${desc}</p>
