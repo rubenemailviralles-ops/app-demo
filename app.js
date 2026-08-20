@@ -377,7 +377,10 @@ function initProgressDots() {
         const dot = document.createElement("span");
         dot.className = `dot ${index === 0 ? 'active' : ''}`;
         dot.title = `Go to slide ${index + 1}`;
-        dot.addEventListener("click", () => zoomCard(index));
+        dot.addEventListener("click", () => {
+            if (typeof stopAutoplay === 'function') stopAutoplay();
+            zoomCard(index);
+        });
         progressDotsContainer.appendChild(dot);
     });
 }
@@ -463,6 +466,13 @@ function zoomCard(index) {
     
     // Smoothly popup control elements
     footerControls.classList.remove("hidden");
+
+    // Reset progress bar time elapsed on slide change
+    if (typeof autoplayInterval !== 'undefined' && autoplayInterval) {
+        autoplayTimeElapsed = 0;
+        const pBar = document.getElementById("autoplayProgressBar");
+        if (pBar) pBar.style.width = "0%";
+    }
 }
 
 // Close Zoom Overlay
@@ -472,16 +482,23 @@ function closeZoom() {
     
     // Hide controls smoothly
     footerControls.classList.add("hidden");
+
+    // Terminate autoplay on close
+    if (typeof stopAutoplay === 'function') {
+        stopAutoplay();
+    }
 }
 
 function nextZoomCard() {
     if (activeZoomIndex !== null && activeZoomIndex < cardsData.length - 1) {
+        if (typeof stopAutoplay === 'function') stopAutoplay();
         zoomCard(activeZoomIndex + 1);
     }
 }
 
 function prevZoomCard() {
     if (activeZoomIndex !== null && activeZoomIndex > 0) {
+        if (typeof stopAutoplay === 'function') stopAutoplay();
         zoomCard(activeZoomIndex - 1);
     }
 }
@@ -611,6 +628,81 @@ document.querySelectorAll(".live-role-card").forEach(card => {
         });
     }
 });
+
+// Autoplay Presentation Deck Automation
+let autoplayInterval = null;
+const autoplayTimeout = 7000; // 7 seconds per slide
+let autoplayTimeElapsed = 0;
+
+const playBtn = document.getElementById("playBtn");
+const playIcon = document.getElementById("playIcon");
+const pauseIcon = document.getElementById("pauseIcon");
+const progressBar = document.getElementById("autoplayProgressBar");
+
+function startAutoplay() {
+    if (autoplayInterval) return;
+    
+    if (playIcon) playIcon.classList.add("hidden");
+    if (pauseIcon) pauseIcon.classList.remove("hidden");
+    if (playBtn) {
+        playBtn.classList.add("playing");
+        playBtn.title = "Pause Autoplay";
+    }
+    
+    autoplayTimeElapsed = 0;
+    if (progressBar) progressBar.style.width = "0%";
+    
+    autoplayInterval = setInterval(() => {
+        autoplayTimeElapsed += 100;
+        const percent = (autoplayTimeElapsed / autoplayTimeout) * 100;
+        if (progressBar) progressBar.style.width = `${percent}%`;
+        
+        if (autoplayTimeElapsed >= autoplayTimeout) {
+            autoplayTimeElapsed = 0;
+            if (progressBar) progressBar.style.width = "0%";
+            
+            // Loop slides
+            if (activeZoomIndex !== null) {
+                if (activeZoomIndex < cardsData.length - 1) {
+                    zoomCard(activeZoomIndex + 1);
+                } else {
+                    zoomCard(0); // Cycle back to slide 1
+                }
+            }
+        }
+    }, 100);
+}
+
+function stopAutoplay() {
+    if (!autoplayInterval) return;
+    
+    clearInterval(autoplayInterval);
+    autoplayInterval = null;
+    autoplayTimeElapsed = 0;
+    
+    if (playIcon) playIcon.classList.remove("hidden");
+    if (pauseIcon) pauseIcon.classList.add("hidden");
+    if (playBtn) {
+        playBtn.classList.remove("playing");
+        playBtn.title = "Autoplay Slides";
+    }
+    if (progressBar) progressBar.style.width = "0%";
+}
+
+function toggleAutoplay() {
+    if (autoplayInterval) {
+        stopAutoplay();
+    } else {
+        startAutoplay();
+    }
+}
+
+if (playBtn) {
+    playBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        toggleAutoplay();
+    });
+}
 
 // Initialization
 renderDashboard();

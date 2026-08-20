@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=1.1.8">
+    <link rel="stylesheet" href="style.css?v=1.1.9">
 </head>
 <body class="dark-theme">
     <!-- Header -->
@@ -43,8 +43,8 @@
 
 
 
-        <!-- Zoom Overlay Modal (Contains zoomed card details) -->
         <div id="zoomOverlay" class="zoom-overlay">
+            <div id="autoplayProgressBar" class="autoplay-progress-bar"></div>
             <div class="zoomed-card-container">
                 <button class="zoom-close-btn" id="zoomCloseBtn" title="Close Overlay (Esc)">&times;</button>
                 <div class="slide-card" id="zoomCard">
@@ -63,6 +63,12 @@
         <div class="slide-navigation">
             <button id="prevBtn" class="nav-btn" title="Previous Slide">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </button>
+
+            <!-- Autoplay button -->
+            <button id="playBtn" class="nav-btn play-btn" title="Autoplay Slides">
+                <svg id="playIcon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                <svg id="pauseIcon" class="hidden" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
             </button>
 
             <div class="progress-dots" id="progressDotsContainer">
@@ -143,6 +149,6 @@
     </div>
 
     <!-- Interactive JS code -->
-    <script src="app.js?v=1.1.8"></script>
+    <script src="app.js?v=1.1.9"></script>
 </body>
 </html>
