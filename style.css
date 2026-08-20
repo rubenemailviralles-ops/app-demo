@@ -1574,7 +1574,7 @@ kbd {
     width: calc(100% + 3rem);
 }
 
-.banner-content {
+.banner-header {
     width: 100%;
     text-align: center;
 }
@@ -1605,8 +1605,8 @@ kbd {
 }
 
 .banner-visual {
-    width: 120px; /* Bigger customizer gear/logo graphic */
-    height: 120px;
+    width: 180px; /* Enlarged customizer gear/logo graphic on PC */
+    height: 180px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1676,6 +1676,10 @@ kbd {
     .banner-desc {
         font-size: 0.78rem !important;
     }
+    .banner-visual {
+        width: 150px !important; /* Enlarged visual graphic on tablet */
+        height: 150px !important;
+    }
 }
 
 @media (max-width: 600px) {
@@ -1699,7 +1703,7 @@ kbd {
         line-height: 1.3 !important;
     }
     .banner-visual {
-        width: 90px !important;
-        height: 90px !important;
+        width: 120px !important; /* Enlarged visual graphic on mobile */
+        height: 120px !important;
     }
 }
