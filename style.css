@@ -796,6 +796,9 @@ kbd {
         padding: 1.5rem !important;
         overflow-y: auto !important; /* Enable scrolling inside the popup card on mobile/tablet viewports */
         position: relative; /* Contain close button */
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        background: #111520 !important; /* Solid color removes backdrop blur rendering costs on mobile GPU */
     }
 
     .slide-content-area {
@@ -1188,11 +1191,40 @@ kbd {
     transform: scale(0.85); /* Subtle scale from 0.85 to 1 for high-end feel */
     opacity: 0;
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease; /* Smooth easeOutExpo transition */
+    will-change: transform, opacity;
 }
 
 .zoom-overlay.show .zoomed-card-container {
     transform: scale(1);
     opacity: 1;
+}
+
+/* GPU promotion for hardware accelerated rendering */
+.zoom-overlay, .slide-card {
+    will-change: transform, opacity;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+}
+
+/* Disable sub-animations while the modal is not fully active or content is switching */
+.slide-card:not(.active) .visual-container *,
+.slide-card.loading .visual-container * {
+    animation-play-state: paused !important;
+    animation: none !important;
+}
+
+/* Inner elements transition for fast slide content switching */
+.slide-content-area, .slide-visual-panel, .visual-container {
+    transition: opacity 0.14s ease-out, transform 0.14s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.slide-card.loading .slide-content-area,
+.slide-card.loading .slide-visual-panel,
+.slide-card.loading .visual-container {
+    opacity: 0;
+    transform: translateY(4px);
 }
 
 .zoom-close-btn {

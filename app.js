@@ -521,90 +521,103 @@ function zoomCard(index) {
     const data = cardsData[index];
     if (!data) return;
 
-    // Reset slide entry animations to ensure visibility (transition opacity: 0 to 1)
-    zoomCardContainer.classList.remove("active");
-    void zoomCardContainer.offsetWidth; // Force layout recalculation
+    const isOverlayOpen = zoomOverlay.classList.contains("show");
 
-    // Slide html injection
-    // Bullet html parser and generation
-    const bulletsHtml = data.bullets.map((b, idx) => {
-        const strongMatch = b.match(/<strong>(.*?)<\/strong>/);
-        let title = "";
-        let desc = b;
-        if (strongMatch) {
-            title = strongMatch[1].replace(/:$/, "").trim();
-            desc = b.replace(strongMatch[0], "").trim();
-            if (desc.startsWith(":")) {
-                desc = desc.substring(1).trim();
-            }
-        }
-        return `
-            <li class="collapsible-bullet" style="--anim-delay: ${0.32 + idx * 0.1}s">
-                <div class="bullet-trigger">
-                    <strong>${title}</strong>
-                    <span class="bullet-arrow">▼</span>
-                </div>
-                <div class="bullet-content">
-                    <p>${desc}</p>
-                </div>
-            </li>
-        `;
-    }).join("");
-    
-    zoomCardContainer.innerHTML = `
-        <div class="slide-content-area">
-            <span class="slide-subtitle">${data.subtitle}</span>
-            <h2 class="slide-title">${data.title}</h2>
-            <ul class="slide-bullets">
-                ${bulletsHtml}
-            </ul>
-        </div>
-        <div class="slide-visual-panel">
-            <div class="visual-container">
-                <div class="visual-graphic">
-                    ${data.visualSvg}
-                </div>
-            </div>
-        </div>
-    `;
-
-    // Add interactive click listeners for collapsible bullet menu triggers on mobile/tablet viewports
-    const triggers = zoomCardContainer.querySelectorAll('.bullet-trigger');
-    triggers.forEach(trig => {
-        trig.addEventListener('click', () => {
-            if (window.innerWidth <= 1024) {
-                const parentLi = trig.closest('.collapsible-bullet');
-                if (parentLi) {
-                    parentLi.classList.toggle('active');
+    // Helper function to update contents and triggers
+    function updateOverlayContent() {
+        // Bullet html parser and generation
+        const bulletsHtml = data.bullets.map((b, idx) => {
+            const strongMatch = b.match(/<strong>(.*?)<\/strong>/);
+            let title = "";
+            let desc = b;
+            if (strongMatch) {
+                title = strongMatch[1].replace(/:$/, "").trim();
+                desc = b.replace(strongMatch[0], "").trim();
+                if (desc.startsWith(":")) {
+                    desc = desc.substring(1).trim();
                 }
             }
+            return `
+                <li class="collapsible-bullet" style="--anim-delay: ${0.05 + idx * 0.05}s">
+                    <div class="bullet-trigger">
+                        <strong>${title}</strong>
+                        <span class="bullet-arrow">▼</span>
+                    </div>
+                    <div class="bullet-content">
+                        <p>${desc}</p>
+                    </div>
+                </li>
+            `;
+        }).join("");
+        
+        zoomCardContainer.innerHTML = `
+            <div class="slide-content-area">
+                <span class="slide-subtitle">${data.subtitle}</span>
+                <h2 class="slide-title">${data.title}</h2>
+                <ul class="slide-bullets">
+                    ${bulletsHtml}
+                </ul>
+            </div>
+            <div class="slide-visual-panel">
+                <div class="visual-container">
+                    <div class="visual-graphic">
+                        ${data.visualSvg}
+                    </div>
+                </div>
+            </div>
+        `;
+
+        // Add interactive click listeners for collapsible bullet menu triggers on mobile/tablet viewports
+        const triggers = zoomCardContainer.querySelectorAll('.bullet-trigger');
+        triggers.forEach(trig => {
+            trig.addEventListener('click', () => {
+                if (window.innerWidth <= 1024) {
+                    const parentLi = trig.closest('.collapsible-bullet');
+                    if (parentLi) {
+                        parentLi.classList.toggle('active');
+                    }
+                }
+            });
         });
-    });
 
-    zoomCardContainer.classList.add("active");
+        // Update Status Indicator
+        slideStatusIndicator.textContent = `Capability ${index + 1} / ${cardsData.length}`;
 
-    // Update Status Indicator
-    slideStatusIndicator.textContent = `Capability ${index + 1} / ${cardsData.length}`;
+        // Update Nav buttons
+        prevBtn.disabled = index === 0;
+        nextBtn.disabled = index === cardsData.length - 1;
 
-    // Update Nav buttons
-    prevBtn.disabled = index === 0;
-    nextBtn.disabled = index === cardsData.length - 1;
+        // Update dots active class
+        const dots = progressDotsContainer.querySelectorAll(".dot");
+        dots.forEach((dot, dotIdx) => {
+            if (dotIdx === index) {
+                dot.classList.add("active");
+            } else {
+                dot.classList.remove("active");
+            }
+        });
+    }
 
-    // Update dots active class
-    const dots = progressDotsContainer.querySelectorAll(".dot");
-    dots.forEach((dot, dotIdx) => {
-        if (dotIdx === index) {
-            dot.classList.add("active");
-        } else {
-            dot.classList.remove("active");
-        }
-    });
-
-    // Show zoomed elements smoothly
-    zoomOverlay.classList.add("show");
-    
-    // Smoothly popup control elements
-    footerControls.classList.remove("hidden");
+    if (isOverlayOpen) {
+        // Fast transition for content switching when overlay is already open
+        zoomCardContainer.classList.add("loading");
+        
+        setTimeout(() => {
+            updateOverlayContent();
+            // Remove loading to fade new contents back in
+            zoomCardContainer.classList.remove("loading");
+        }, 120);
+    } else {
+        // First load: instantly inject and active frame
+        zoomCardContainer.classList.remove("active");
+        zoomCardContainer.classList.remove("loading");
+        updateOverlayContent();
+        
+        // Show zoomed elements smoothly
+        zoomCardContainer.classList.add("active");
+        zoomOverlay.classList.add("show");
+        footerControls.classList.remove("hidden");
+    }
 
     // Reset progress bar time elapsed on slide change
     if (typeof autoplayInterval !== 'undefined' && autoplayInterval) {
