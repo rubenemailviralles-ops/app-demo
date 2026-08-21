@@ -745,35 +745,30 @@ if (tryLiveBtn) {
     });
 }
 
-// Get Software Dropdown controls
+// Get Software Modal controls
 const getSoftwareBtn = document.getElementById("getSoftwareBtn");
-const getSoftwareMenu = document.getElementById("getSoftwareMenu");
+const getSoftwareModal = document.getElementById("getSoftwareModal");
+const getSoftwareCloseBtn = document.getElementById("getSoftwareCloseBtn");
 
-if (getSoftwareBtn && getSoftwareMenu) {
-    getSoftwareBtn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        getSoftwareMenu.classList.toggle("show");
-    });
-    
-    // Close menu when clicking items
-    const dropdownItems = getSoftwareMenu.querySelectorAll(".dropdown-item");
-    dropdownItems.forEach(item => {
-        item.addEventListener("click", () => {
-            getSoftwareMenu.classList.remove("show");
-        });
+if (getSoftwareBtn && getSoftwareModal) {
+    getSoftwareBtn.addEventListener("click", () => {
+        getSoftwareModal.classList.add("show");
     });
 }
 
-// Global click handler to close dropdown when clicking outside
-document.addEventListener("click", (e) => {
-    const getSoftwareMenu = document.getElementById("getSoftwareMenu");
-    const getSoftwareBtn = document.getElementById("getSoftwareBtn");
-    if (getSoftwareMenu && getSoftwareBtn) {
-        if (!getSoftwareMenu.contains(e.target) && !getSoftwareBtn.contains(e.target)) {
-            getSoftwareMenu.classList.remove("show");
+if (getSoftwareCloseBtn) {
+    getSoftwareCloseBtn.addEventListener("click", () => {
+        getSoftwareModal.classList.remove("show");
+    });
+}
+
+if (getSoftwareModal) {
+    getSoftwareModal.addEventListener("click", (e) => {
+        if (e.target === getSoftwareModal) {
+            getSoftwareModal.classList.remove("show");
         }
-    }
-});
+    });
+}
 
 if (tryLiveCloseBtn) {
     tryLiveCloseBtn.addEventListener("click", () => {
