@@ -1000,31 +1000,56 @@ kbd {
 
 @media (max-width: 600px) {
     .navbar {
-        padding: 0.5rem 1rem !important;
-        height: 60px !important;
+        padding: 0.75rem 1rem !important;
+        height: auto !important;
+        min-height: 125px !important;
         display: flex !important;
-        flex-direction: row !important;
-        justify-content: space-between !important;
-        align-items: center !important;
+        flex-direction: column !important;
+        justify-content: flex-start !important;
+        align-items: flex-start !important;
+        gap: 0.6rem !important;
     }
     .logo-text {
-        font-size: 0.9rem !important;
+        font-size: 0.95rem !important;
     }
     .logo-dot {
         width: 10px !important;
         height: 10px !important;
     }
+    .header-controls {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        gap: 0.4rem !important;
+    }
+    .header-controls .dropdown,
+    .header-controls .control-btn {
+        width: 100% !important;
+        margin: 0 !important;
+    }
+    .dropdown-toggle,
+    #tryLiveBtn {
+        width: 100% !important;
+        justify-content: center !important;
+    }
+    .dropdown-menu {
+        width: 100% !important;
+        left: 0 !important;
+        right: 0 !important;
+        top: auto !important;
+        box-sizing: border-box !important;
+    }
     .live-app-btn {
-        padding: 0.3rem 0.65rem !important;
-        font-size: 0.68rem !important;
-        gap: 4px !important;
+        padding: 0.35rem 0.8rem !important;
+        font-size: 0.72rem !important;
+        gap: 6px !important;
     }
     .live-app-btn svg {
         width: 12px !important;
         height: 12px !important;
     }
     .presentation-container {
-        height: calc(100vh - 110px) !important; /* Keep it fixed height (Navbar 60px + footer 50px) */
+        height: calc(100vh - 175px) !important; /* Keep it fixed height (Navbar 125px + footer 50px) */
     }
     
     .dashboard-grid {
@@ -2090,4 +2115,90 @@ kbd {
     .hero-val-row {
         font-size: 0.85rem !important;
     }
+}
+
+/* Get Software Dropdown structures */
+.dropdown {
+    position: relative;
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+.dropdown-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+/* Secondary glowing purple style for Get Software button */
+.live-app-btn.secondary-btn {
+    background: #131720 !important;
+    border: 1.5px solid rgba(157, 78, 221, 0.4) !important;
+    color: #ffffff !important;
+    box-shadow: 0 0 10px rgba(157, 78, 221, 0.08) !important;
+}
+
+.live-app-btn.secondary-btn:hover {
+    border-color: #9d4edd !important;
+    background: rgba(157, 78, 221, 0.05) !important;
+    box-shadow: 0 0 16px rgba(157, 78, 221, 0.25) !important;
+    transform: translateY(-1px) scale(1.02);
+}
+
+.live-app-btn.secondary-btn svg {
+    stroke: #ffffff !important;
+}
+
+/* Dropdown menu overlay */
+.dropdown-menu {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    margin-top: 0.5rem;
+    background: #0d1118;
+    border: 1.5px solid rgba(100, 255, 218, 0.2);
+    border-radius: 8px;
+    box-shadow: 0 4px 22px rgba(0, 0, 0, 0.6), 0 0 15px rgba(100, 255, 218, 0.1);
+    display: none;
+    min-width: 240px;
+    z-index: 999;
+    padding: 0.4rem 0;
+    animation: fadeInDropdown 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeInDropdown {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.7rem 1.1rem;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    font-family: 'Inter', sans-serif;
+    text-decoration: none;
+    transition: var(--transition-smooth);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.dropdown-item:last-child {
+    border-bottom: none;
+}
+
+.dropdown-item:hover {
+    background: rgba(100, 255, 218, 0.06);
+    color: #64ffda;
+}
+
+.dropdown-item .icon {
+    font-size: 0.95rem;
+}
+
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
 }

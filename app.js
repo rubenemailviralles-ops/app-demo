@@ -732,6 +732,34 @@ if (tryLiveBtn) {
     });
 }
 
+// Get Software Dropdown controls
+const getSoftwareBtn = document.getElementById("getSoftwareBtn");
+const getSoftwareMenu = document.getElementById("getSoftwareMenu");
+
+if (getSoftwareBtn && getSoftwareMenu) {
+    getSoftwareBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        getSoftwareMenu.classList.toggle("show");
+    });
+    
+    // Close menu when clicking items
+    const dropdownItems = getSoftwareMenu.querySelectorAll(".dropdown-item");
+    dropdownItems.forEach(item => {
+        item.addEventListener("click", () => {
+            getSoftwareMenu.classList.remove("show");
+        });
+    });
+}
+
+// Global click handler to close dropdown when clicking outside
+document.addEventListener("click", (e) => {
+    const getSoftwareMenu = document.getElementById("getSoftwareMenu");
+    const getSoftwareBtn = document.getElementById("getSoftwareBtn");
+    if (getSoftwareMenu && !getSoftwareMenu.contains(e.target) && e.target !== getSoftwareBtn) {
+        getSoftwareMenu.classList.remove("show");
+    }
+});
+
 if (tryLiveCloseBtn) {
     tryLiveCloseBtn.addEventListener("click", () => {
         tryLiveModal.classList.remove("show");
