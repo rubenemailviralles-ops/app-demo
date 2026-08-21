@@ -789,27 +789,32 @@ if (tryLiveModal) {
     });
 }
 
-// Copy passcode to clipboard and open live Vercel app
-document.querySelectorAll(".live-role-card").forEach(card => {
-    const btn = card.querySelector(".launch-role-btn");
-    const passcode = card.getAttribute("data-passcode");
-    const roleBadge = card.querySelector(".role-badge");
-    const roleName = roleBadge ? roleBadge.textContent : "Selected Role";
-    
-    if (btn && passcode) {
-        btn.addEventListener("click", () => {
-            navigator.clipboard.writeText(passcode).then(() => {
-                showToast(`${roleName} Passcode (${passcode}) copied! Opening live app...`);
-                setTimeout(() => {
-                    window.open("https://smoking-goblin-420.vercel.app/", "_blank");
-                }, 800);
+// Copy username or passcode to clipboard on small copy button clicks
+document.querySelectorAll(".copy-small-btn").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+        e.stopPropagation(); // Prevent modal overlay clicks
+        const val = btn.getAttribute("data-copy");
+        const title = btn.getAttribute("title") || "Value";
+        if (val) {
+            navigator.clipboard.writeText(val).then(() => {
+                showToast(`${title} copied: "${val}"`);
             }).catch(err => {
                 console.error("Clipboard copy failed: ", err);
-                window.open("https://smoking-goblin-420.vercel.app/", "_blank");
             });
-        });
-    }
+        }
+    });
 });
+
+// Launch sandbox application from primary button click
+const launchDemoBtn = document.getElementById("launchDemoBtn");
+if (launchDemoBtn) {
+    launchDemoBtn.addEventListener("click", () => {
+        showToast("Opening live sandbox app...");
+        setTimeout(() => {
+            window.open("https://smoking-goblin-420.vercel.app/", "_blank");
+        }, 300);
+    });
+}
 
 // Autoplay Presentation Deck Automation
 let autoplayInterval = null;

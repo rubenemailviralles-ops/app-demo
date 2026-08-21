@@ -1485,24 +1485,39 @@ kbd {
     border: 1px dashed var(--border-color);
 }
 
-.launch-role-btn {
-    width: 100%;
-    background: var(--primary);
-    color: #0d1118;
-    border: none;
-    border-radius: 6px;
-    padding: 0.5rem;
-    font-size: 0.8rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: var(--transition-smooth);
-    text-align: center;
+.copy-val-wrapper {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-left: 0.25rem;
 }
 
-.launch-role-btn:hover {
-    background: #52e0c4;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(100, 255, 218, 0.3);
+.copy-small-btn {
+    background: none;
+    border: none;
+    padding: 3px;
+    cursor: pointer;
+    color: var(--text-muted);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: color var(--transition-smooth), background var(--transition-smooth), transform 0.1s ease;
+    border-radius: 4px;
+}
+
+.copy-small-btn:hover {
+    color: var(--primary);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.copy-small-btn:active {
+    transform: scale(0.9);
+}
+
+.copy-small-btn svg.copy-icon {
+    width: 13px;
+    height: 13px;
+    pointer-events: none;
 }
 
 .live-modal-footer {
