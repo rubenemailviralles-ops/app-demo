@@ -497,27 +497,19 @@ function renderDashboard() {
         dashboardGrid.appendChild(cardEl);
     });
 
-    // Populate and bind click listener on the separate top Hero Value Card
-    const valueHeroCard = document.getElementById("valueHeroCard");
+    // Populate and bind click listener on the separate top Hero Visual and Section
+    const heroVisual = document.getElementById("heroVisual");
+    const heroSection = document.getElementById("heroSection");
     const valueCardData = cardsData[6]; // The 7th slide (id: 8)
-    if (valueHeroCard && valueCardData) {
-        valueHeroCard.innerHTML = `
-            <div class="grid-card-info">
-                <span class="grid-card-subtitle">${valueCardData.subtitle}</span>
-                <h3 class="grid-card-title">${valueCardData.title}</h3>
-            </div>
-            <div class="grid-card-preview">
-                <div class="mini-visual-graphic">
-                    ${valueCardData.visualSvg}
-                </div>
-            </div>
-        `;
-        
+    if (heroVisual && valueCardData) {
+        heroVisual.innerHTML = valueCardData.visualSvg;
+    }
+    if (heroSection) {
         // Clone to remove previous event listeners
-        const cleanValueHeroCard = valueHeroCard.cloneNode(true);
-        valueHeroCard.parentNode.replaceChild(cleanValueHeroCard, valueHeroCard);
+        const cleanHeroSection = heroSection.cloneNode(true);
+        heroSection.parentNode.replaceChild(cleanHeroSection, heroSection);
         
-        cleanValueHeroCard.addEventListener("click", () => {
+        cleanHeroSection.addEventListener("click", () => {
             zoomCard(6); // Zoom slide 8 (cardsData index 6)
         });
     }

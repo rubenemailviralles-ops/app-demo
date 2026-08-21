@@ -1922,21 +1922,28 @@ kbd {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    margin-bottom: 2.5rem;
-    padding-bottom: 1.5rem;
+    margin-bottom: 3.5rem;
+    padding-bottom: 2rem;
     border-bottom: 1px solid var(--border-color);
     flex-shrink: 0;
+    cursor: pointer;
+    text-align: center;
+}
+
+.hero-section:hover .hero-visual svg {
+    transform: scale(1.03);
+    filter: drop-shadow(0 0 20px rgba(100, 255, 218, 0.12));
 }
 
 .hero-text-block {
     text-align: center;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     max-width: 800px;
     width: 100%;
 }
 
 .hero-title {
-    font-size: 2.2rem;
+    font-size: 2.5rem;
     font-weight: 800;
     margin-bottom: 0.5rem;
     background: linear-gradient(135deg, #ffffff, #a8b2d1);
@@ -1946,35 +1953,36 @@ kbd {
     letter-spacing: -0.02em;
 }
 
-.hero-subtitle {
-    font-size: 1.05rem;
-    color: var(--text-muted);
-    line-height: 1.5;
-}
-
-.hero-card-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
+/* Floating visual container matching customization banner graphics dimensions */
+.hero-visual {
+    width: 320px;
+    height: 260px;
     margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     flex-shrink: 0;
-}
-
-/* Borderless & Outline-free Value Card matching capabilities block dimensions */
-.value-hero-card {
-    width: 320px !important;
-    height: 310px !important;
-    border: none !important; /* NO outline / border outline as requested */
-    box-shadow: none !important; /* NO glow shadow outline */
-    background: rgba(255, 255, 255, 0.012) !important; /* Extremely clean transparent glass */
     transition: var(--transition-smooth);
 }
 
-.value-hero-card:hover {
-    border: none !important;
-    box-shadow: none !important;
-    background: rgba(255, 255, 255, 0.03) !important; /* Smooth hover illumination */
-    transform: scale(1.01) translateY(-1px) !important;
+.hero-visual svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* Core Values horizontal row under graphics */
+.hero-val-row {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    margin-top: 0.5rem;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 /* Value propositions SVG animations */
@@ -2064,19 +2072,17 @@ kbd {
     100% { fill: #64ffda; opacity: 1; }
 }
 
-/* Responsive hero value card overrides */
+/* Responsive hero value overrides */
 @media (max-width: 1024px) {
     .hero-title {
         font-size: 1.8rem !important;
     }
-    .hero-subtitle {
-        font-size: 0.95rem !important;
+    .hero-visual {
+        width: 260px !important;
+        height: 210px !important;
     }
-    .value-hero-card {
-        width: 100% !important;
-        max-width: 320px !important;
-        height: 100% !important;
-        min-height: 150px !important;
+    .hero-val-row {
+        font-size: 0.95rem !important;
     }
 }
 
@@ -2084,10 +2090,11 @@ kbd {
     .hero-title {
         font-size: 1.6rem !important;
     }
-    .value-hero-card {
-        width: 100% !important;
-        max-width: 100% !important;
-        height: 100% !important;
-        min-height: 110px !important;
+    .hero-visual {
+        width: 200px !important;
+        height: 160px !important;
+    }
+    .hero-val-row {
+        font-size: 0.85rem !important;
     }
 }
