@@ -688,8 +688,10 @@ kbd {
     }
     
     .live-app-btn {
-        padding: 0.35rem 0.8rem !important;
+        padding: 0.35rem 0 !important;
         font-size: 0.72rem !important;
+        min-width: 105px !important;
+        justify-content: center !important;
     }
 
     .presentation-container {
@@ -1040,13 +1042,11 @@ kbd {
         box-sizing: border-box !important;
     }
     .live-app-btn {
-        padding: 0.28rem 0.55rem !important;
-        font-size: 0.64rem !important;
-        gap: 4px !important;
-    }
-    .live-app-btn svg {
-        width: 10px !important;
-        height: 10px !important;
+        padding: 0.28rem 0 !important;
+        font-size: 0.62rem !important;
+        width: 80px !important;
+        justify-content: center !important;
+        text-align: center !important;
     }
     .presentation-container {
         height: calc(100vh - 114px) !important; /* Keep it fixed height (Navbar 64px + footer 50px) */
@@ -1509,12 +1509,13 @@ kbd {
     font-weight: 700 !important;
     animation: neonFlow 8s linear infinite !important;
     box-shadow: 0 0 15px rgba(100, 255, 218, 0.45) !important;
-    padding: 0.4rem 0.9rem !important; /* Professional small size */
+    padding: 0.4rem 0 !important; /* Professional small size */
     font-size: 0.75rem !important;
     border-radius: 8px !important;
     display: flex;
     align-items: center;
-    gap: 6px;
+    justify-content: center;
+    min-width: 110px;
     cursor: pointer;
     transition: var(--transition-smooth) !important;
 }
@@ -1522,10 +1523,6 @@ kbd {
 .live-app-btn:hover {
     box-shadow: 0 0 22px rgba(247, 37, 133, 0.7) !important;
     transform: translateY(-1px) scale(1.02);
-}
-
-.live-app-btn svg {
-    stroke: #0d1118 !important; /* Match dark text color */
 }
 
 @keyframes neonFlow {
@@ -2131,23 +2128,7 @@ kbd {
 }
 
 /* Secondary glowing purple style for Get Software button */
-.live-app-btn.secondary-btn {
-    background: #131720 !important;
-    border: 1.5px solid rgba(157, 78, 221, 0.4) !important;
-    color: #ffffff !important;
-    box-shadow: 0 0 10px rgba(157, 78, 221, 0.08) !important;
-}
 
-.live-app-btn.secondary-btn:hover {
-    border-color: #9d4edd !important;
-    background: rgba(157, 78, 221, 0.05) !important;
-    box-shadow: 0 0 16px rgba(157, 78, 221, 0.25) !important;
-    transform: translateY(-1px) scale(1.02);
-}
-
-.live-app-btn.secondary-btn svg {
-    stroke: #ffffff !important;
-}
 
 /* Dropdown menu overlay */
 .dropdown-menu {
