@@ -755,8 +755,10 @@ if (getSoftwareBtn && getSoftwareMenu) {
 document.addEventListener("click", (e) => {
     const getSoftwareMenu = document.getElementById("getSoftwareMenu");
     const getSoftwareBtn = document.getElementById("getSoftwareBtn");
-    if (getSoftwareMenu && !getSoftwareMenu.contains(e.target) && e.target !== getSoftwareBtn) {
-        getSoftwareMenu.classList.remove("show");
+    if (getSoftwareMenu && getSoftwareBtn) {
+        if (!getSoftwareMenu.contains(e.target) && !getSoftwareBtn.contains(e.target)) {
+            getSoftwareMenu.classList.remove("show");
+        }
     }
 });
 
