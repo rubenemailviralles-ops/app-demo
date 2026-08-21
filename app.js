@@ -3,7 +3,7 @@ const slideData = [
     {
         id: 1,
         subtitle: "Vision & Value Proposition",
-        title: "Dispensary Management & Logistics System",
+        title: "Management & Logistics System",
         bullets: [
             "<strong>High-Performance SPA:</strong> Responsive single-page app built on React, TypeScript, Vite, and Supabase.",
             "<strong>Local-First Fallback:</strong> Active local storage synchronization ensures continuous offline functionality.",
