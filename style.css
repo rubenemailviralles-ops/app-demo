@@ -1915,3 +1915,179 @@ kbd {
         margin-top: 3rem !important;
     }
 }
+
+/* Value Proposition Hero Section layout */
+.hero-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    flex-shrink: 0;
+}
+
+.hero-text-block {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    max-width: 800px;
+    width: 100%;
+}
+
+.hero-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, #ffffff, #a8b2d1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: 'Outfit', sans-serif;
+    letter-spacing: -0.02em;
+}
+
+.hero-subtitle {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+.hero-card-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+    flex-shrink: 0;
+}
+
+/* Borderless & Outline-free Value Card matching capabilities block dimensions */
+.value-hero-card {
+    width: 320px !important;
+    height: 310px !important;
+    border: none !important; /* NO outline / border outline as requested */
+    box-shadow: none !important; /* NO glow shadow outline */
+    background: rgba(255, 255, 255, 0.012) !important; /* Extremely clean transparent glass */
+    transition: var(--transition-smooth);
+}
+
+.value-hero-card:hover {
+    border: none !important;
+    box-shadow: none !important;
+    background: rgba(255, 255, 255, 0.03) !important; /* Smooth hover illumination */
+    transform: scale(1.01) translateY(-1px) !important;
+}
+
+/* Value propositions SVG animations */
+.hub-spin {
+    transform-origin: 100px 100px;
+    animation: hubRotate 12s linear infinite;
+}
+
+@keyframes hubRotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Staggered network pulses traveling to corner value nodes */
+@keyframes pulseToCheaper {
+    0% { cx: 100px; cy: 100px; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { cx: 55px; cy: 55px; opacity: 0; }
+}
+@keyframes pulseToEasy {
+    0% { cx: 100px; cy: 100px; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { cx: 145px; cy: 55px; opacity: 0; }
+}
+@keyframes pulseToReliable {
+    0% { cx: 100px; cy: 100px; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { cx: 55px; cy: 145px; opacity: 0; }
+}
+@keyframes pulseToSecure {
+    0% { cx: 100px; cy: 100px; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { cx: 145px; cy: 145px; opacity: 0; }
+}
+
+.pd-1 { animation: pulseToCheaper 3.5s infinite linear; }
+.pd-2 { animation: pulseToEasy 3.5s infinite linear; animation-delay: 0.85s; }
+.pd-3 { animation: pulseToReliable 3.5s infinite linear; animation-delay: 1.7s; }
+.pd-4 { animation: pulseToSecure 3.5s infinite linear; animation-delay: 2.55s; }
+
+/* Micro-animations inside peripheral value node circles */
+.falling-coin-node {
+    animation: nodeCoinDrop 2s infinite ease-in;
+}
+
+@keyframes nodeCoinDrop {
+    0% { transform: translateY(-4px); opacity: 0; }
+    20% { opacity: 1; }
+    80%, 100% { transform: translateY(8px); opacity: 0; }
+}
+
+.toggle-knob-node {
+    animation: nodeKnobSlide 3.5s infinite ease-in-out;
+}
+
+@keyframes nodeKnobSlide {
+    0%, 20%, 80%, 100% { cx: 142px; fill: #9d4edd; }
+    40%, 60% { cx: 148px; fill: #64ffda; }
+}
+
+.tap-hand-node {
+    transform-origin: 145px 61px;
+    animation: nodeHandTap 3.5s infinite ease-in-out;
+}
+
+@keyframes nodeHandTap {
+    0%, 100% { transform: translateY(0); }
+    20%, 80% { transform: translateY(-1.5px); }
+    30%, 70% { transform: translateY(-2.5px); }
+}
+
+.server-status-1 {
+    animation: serverPulse 1.4s infinite alternate;
+}
+
+.server-status-2 {
+    animation: serverPulse 1.4s infinite alternate;
+    animation-delay: 0.7s;
+}
+
+@keyframes serverPulse {
+    0% { fill: #00b4d8; opacity: 0.3; }
+    100% { fill: #64ffda; opacity: 1; }
+}
+
+/* Responsive hero value card overrides */
+@media (max-width: 1024px) {
+    .hero-title {
+        font-size: 1.8rem !important;
+    }
+    .hero-subtitle {
+        font-size: 0.95rem !important;
+    }
+    .value-hero-card {
+        width: 100% !important;
+        max-width: 320px !important;
+        height: 100% !important;
+        min-height: 150px !important;
+    }
+}
+
+@media (max-width: 600px) {
+    .hero-title {
+        font-size: 1.6rem !important;
+    }
+    .value-hero-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 100% !important;
+        min-height: 110px !important;
+    }
+}

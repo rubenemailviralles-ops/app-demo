@@ -346,6 +346,90 @@ const slideData = [
             <p><strong>Script:</strong> "Compliance is our ultimate objective. Private clubs and grow associations must track member logs and consumed quotas to maintain legal custody protections.</p>
             <p>By logging lifetime grams per member, automating dues, and running point-buying configurations, the software ensures operators separate cannabis distribution from retail transactions, protecting their legal model."</p>
         `
+    },
+    {
+        id: 8,
+        subtitle: "Core Value Propositions",
+        title: "Cheaper • Easy • Reliable • Secure",
+        bullets: [
+            "<strong>Cheaper:</strong> Substantially lower running costs with no processing markups or hidden operational fees.",
+            "<strong>Easy to Use:</strong> Streamlined layouts require zero training for budtenders, managers, and member check-ins.",
+            "<strong>Reliable:</strong> Guaranteed uptime with local-first offline capabilities that sync databases when reconnected.",
+            "<strong>Secure:</strong> End-to-end data encryption, active console locking, and code integrity audits."
+        ],
+        visualName: "Value Engine Concept",
+        visualAdvice: "A visual showing a central spinning core connected to four peripheral quadrants representing Cheaper, Easy, Reliable, and Secure nodes with pulsing data streams.",
+        visualSvg: `
+            <svg class="placeholder-svg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Connecting network lines from center (100, 100) to four corners -->
+                <line x1="100" y1="100" x2="55" y2="55" stroke="rgba(255,255,255,0.08)" stroke-width="2"/>
+                <line x1="100" y1="100" x2="145" y2="55" stroke="rgba(255,255,255,0.08)" stroke-width="2"/>
+                <line x1="100" y1="100" x2="55" y2="145" stroke="rgba(255,255,255,0.08)" stroke-width="2"/>
+                <line x1="100" y1="100" x2="145" y2="145" stroke="rgba(255,255,255,0.08)" stroke-width="2"/>
+
+                <!-- Dynamic data pulse dots traveling along connection lines -->
+                <circle cx="100" cy="100" r="3" fill="#64ffda" class="pulse-dot pd-1"/>
+                <circle cx="100" cy="100" r="3" fill="#9d4edd" class="pulse-dot pd-2"/>
+                <circle cx="100" cy="100" r="3" fill="#00b4d8" class="pulse-dot pd-3"/>
+                <circle cx="100" cy="100" r="3" fill="#f72585" class="pulse-dot pd-4"/>
+
+                <!-- Central Hub -->
+                <g class="hub-group">
+                    <circle cx="100" cy="100" r="22" fill="#0d1118" stroke="url(#coreNeonGrad)" stroke-width="2"/>
+                    <circle cx="100" cy="100" r="14" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1.5" stroke-dasharray="4 2" class="hub-spin"/>
+                    <text x="100" y="103" fill="#ffffff" font-size="6" font-family="'Outfit', sans-serif" font-weight="800" text-anchor="middle" letter-spacing="0.05em">CORE</text>
+                </g>
+
+                <!-- Top-Left Node: CHEAPER -->
+                <g class="value-node node-cheaper">
+                    <circle cx="55" cy="55" r="18" fill="#0d1118" stroke="#64ffda" stroke-width="1.5" filter="url(#glowTealValue)"/>
+                    <path d="M50 51 C50 47 55 45 59 47 C62 49 61 54 59 55" stroke="#64ffda" stroke-width="1" fill="none"/>
+                    <circle cx="55" cy="55" r="6" fill="none" stroke="#64ffda" stroke-width="1"/>
+                    <line x1="53" y1="52" x2="57" y2="52" stroke="#64ffda" stroke-width="1"/>
+                    <circle cx="55" cy="45" r="1.8" fill="#ffb703" class="falling-coin-node"/>
+                </g>
+
+                <!-- Top-Right Node: EASY TO USE -->
+                <g class="value-node node-easy">
+                    <circle cx="145" cy="55" r="18" fill="#0d1118" stroke="#9d4edd" stroke-width="1.5" filter="url(#glowVioletValue)"/>
+                    <rect x="138" y="51" width="14" height="8" rx="4" fill="none" stroke="#9d4edd" stroke-width="0.8"/>
+                    <circle cx="142" cy="55" r="2.5" fill="#9d4edd" class="toggle-knob-node"/>
+                    <path d="M145 61 L148 57 L149 53 L147 53 L145 56 Z" fill="#ffffff" stroke="#9d4edd" stroke-width="0.75" class="tap-hand-node"/>
+                </g>
+
+                <!-- Bottom-Left Node: RELIABLE -->
+                <g class="value-node node-reliable">
+                    <circle cx="55" cy="145" r="18" fill="#0d1118" stroke="#00b4d8" stroke-width="1.5" filter="url(#glowBlueValue)"/>
+                    <rect x="47" y="137" width="16" height="5" rx="1" fill="none" stroke="#00b4d8" stroke-width="0.8"/>
+                    <rect x="47" y="144" width="16" height="5" rx="1" fill="none" stroke="#00b4d8" stroke-width="0.8"/>
+                    <circle cx="50" cy="139.5" r="0.8" fill="#64ffda" class="server-status-1"/>
+                    <circle cx="50" cy="146.5" r="0.8" fill="#64ffda" class="server-status-2"/>
+                </g>
+
+                <!-- Bottom-Right Node: SECURE -->
+                <g class="value-node node-secure">
+                    <circle cx="145" cy="145" r="18" fill="#0d1118" stroke="#f72585" stroke-width="1.5" filter="url(#glowPinkValue)"/>
+                    <path d="M145 137 L152 140 V147 C152 152 145 155 145 155 C145 155 138 152 138 147 V140 L145 137 Z" fill="none" stroke="#f72585" stroke-width="1"/>
+                    <rect x="142" y="143" width="6" height="5" rx="0.8" fill="#f72585" opacity="0.8"/>
+                </g>
+
+                <defs>
+                    <linearGradient id="coreNeonGrad" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0%" stop-color="#64ffda"/>
+                        <stop offset="50%" stop-color="#00b4d8"/>
+                        <stop offset="100%" stop-color="#9d4edd"/>
+                    </linearGradient>
+                    <filter id="glowTealValue" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="3" result="blur"/><feColorMatrix type="matrix" values="0 0 0 0 0.39   0 0 0 0 1   0 0 0 0 0.85  0 0 0 0.25 0"/></filter>
+                    <filter id="glowVioletValue" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="3" result="blur"/><feColorMatrix type="matrix" values="0 0 0 0 0.61   0 0 0 0 0.3   0 0 0 0 0.86  0 0 0 0.25 0"/></filter>
+                    <filter id="glowBlueValue" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="3" result="blur"/><feColorMatrix type="matrix" values="0 0 0 0 0   0 0 0 0 0.7   0 0 0 0 0.85  0 0 0 0.25 0"/></filter>
+                    <filter id="glowPinkValue" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="3" result="blur"/><feColorMatrix type="matrix" values="0 0 0 0 0.96   0 0 0 0 0.14   0 0 0 0 0.52  0 0 0 0.25 0"/></filter>
+                </defs>
+            </svg>
+        `,
+        script: `
+            <p><strong>Script:</strong> "Our platform stands on four core values: Cheaper cost, Ease of use, absolute Reliability, and bulletproof Security.</p>
+            <p>We eliminate transaction operational markup fees, offer a layout that requires zero budtender training, maintain local database offline sync systems to ensure zero trade downtime, and run encrypted registrars dynamically to secure dispensary data structures."</p>
+        `
     }
 ];
 
@@ -388,7 +472,9 @@ function initProgressDots() {
 // Render Dashboard grid list
 function renderDashboard() {
     dashboardGrid.innerHTML = "";
-    cardsData.forEach((data, index) => {
+    // Only render the 6 capability cards inside the capabilities grid
+    const capabilityCards = cardsData.slice(0, 6);
+    capabilityCards.forEach((data, index) => {
         const cardEl = document.createElement("div");
         cardEl.className = "grid-card";
         
@@ -410,6 +496,31 @@ function renderDashboard() {
         
         dashboardGrid.appendChild(cardEl);
     });
+
+    // Populate and bind click listener on the separate top Hero Value Card
+    const valueHeroCard = document.getElementById("valueHeroCard");
+    const valueCardData = cardsData[6]; // The 7th slide (id: 8)
+    if (valueHeroCard && valueCardData) {
+        valueHeroCard.innerHTML = `
+            <div class="grid-card-info">
+                <span class="grid-card-subtitle">${valueCardData.subtitle}</span>
+                <h3 class="grid-card-title">${valueCardData.title}</h3>
+            </div>
+            <div class="grid-card-preview">
+                <div class="mini-visual-graphic">
+                    ${valueCardData.visualSvg}
+                </div>
+            </div>
+        `;
+        
+        // Clone to remove previous event listeners
+        const cleanValueHeroCard = valueHeroCard.cloneNode(true);
+        valueHeroCard.parentNode.replaceChild(cleanValueHeroCard, valueHeroCard);
+        
+        cleanValueHeroCard.addEventListener("click", () => {
+            zoomCard(6); // Zoom slide 8 (cardsData index 6)
+        });
+    }
 }
 
 // Open and Zoom card overlay
