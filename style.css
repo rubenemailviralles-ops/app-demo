@@ -1325,7 +1325,7 @@ kbd {
 
 .live-roles-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 next to each other by default */
+    grid-template-columns: repeat(4, 1fr); /* 4 next to each other on desktop */
     gap: 1rem;
 }
 
@@ -1366,8 +1366,8 @@ kbd {
         padding: 0.15rem 0.4rem !important;
     }
     .role-details p {
-        font-size: 0.7rem !important;
-        margin-bottom: 0.15rem !important;
+        font-size: 0.72rem !important;
+        margin-bottom: 0.25rem !important;
     }
     .launch-role-btn {
         padding: 0.4rem !important;
@@ -1466,9 +1466,17 @@ kbd {
 }
 
 .role-details p {
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     color: var(--text-muted);
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.role-details p:last-child {
+    margin-bottom: 0;
 }
 
 .role-details p strong {
@@ -1518,6 +1526,19 @@ kbd {
     width: 13px;
     height: 13px;
     pointer-events: none;
+}
+
+@media (max-width: 768px) {
+    .copy-val-wrapper {
+        gap: 0.25rem !important;
+    }
+    .copy-small-btn {
+        padding: 2px !important;
+    }
+    .copy-small-btn svg.copy-icon {
+        width: 11px !important;
+        height: 11px !important;
+    }
 }
 
 .live-modal-footer {
