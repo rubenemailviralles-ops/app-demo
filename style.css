@@ -1670,8 +1670,6 @@ kbd {
     align-items: center; /* Center horizontally */
     padding: 2.25rem 2.5rem;
     margin-top: 2rem; /* Spacious top margin separating from the grid cards above */
-    border-top: 1px solid var(--border-color);
-    background: rgba(255, 255, 255, 0.015);
     min-height: 220px;
     position: relative;
     text-align: center;
@@ -1833,8 +1831,6 @@ kbd {
     align-items: center;
     padding: 2.25rem 2.5rem;
     margin-top: 2rem; /* Separation from banner above */
-    border-top: 1px solid var(--border-color);
-    background: rgba(255, 255, 255, 0.01); /* Subtle dark container tint */
     min-height: 220px;
     position: relative;
     text-align: center;
@@ -1924,7 +1920,6 @@ kbd {
     width: 100%;
     margin-bottom: 3.5rem;
     padding-bottom: 2rem;
-    border-bottom: 1px solid var(--border-color);
     flex-shrink: 0;
     cursor: pointer;
     text-align: center;
