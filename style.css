@@ -1689,7 +1689,7 @@ kbd {
     justify-content: center;
     align-items: center; /* Center horizontally */
     padding: 2.25rem 2.5rem;
-    margin-top: 2rem; /* Spacious top margin separating from the grid cards above */
+    margin-top: 0.75rem; /* Spacious top margin separating from the grid cards above */
     min-height: 220px;
     position: relative;
     text-align: center;
@@ -1797,7 +1797,7 @@ kbd {
         padding: 1.75rem 1.5rem !important;
         gap: 0 !important; /* Reset general gap */
         min-height: 180px !important;
-        margin-top: 1.75rem !important; /* Spacious separation to prevent overlap */
+        margin-top: 0.6rem !important; /* Spacious separation to prevent overlap */
     }
     .banner-header {
         margin-bottom: 0.4rem !important; /* Group title close to its picture underneath */
@@ -1823,7 +1823,7 @@ kbd {
         padding: 1.5rem 1rem !important;
         gap: 0 !important; /* Reset general gap */
         min-height: 150px !important;
-        margin-top: 1.5rem !important; /* Separation on mobile */
+        margin-top: 0.5rem !important; /* Separation on mobile */
     }
     .banner-header {
         margin-bottom: 0.3rem !important; /* Group title close to its picture underneath */
@@ -1938,8 +1938,8 @@ kbd {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    margin-bottom: 3.5rem;
-    padding-bottom: 2rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
     flex-shrink: 0;
     cursor: pointer;
     text-align: center;
@@ -2099,6 +2099,10 @@ kbd {
     .hero-val-row {
         font-size: 0.95rem !important;
     }
+    .hero-section {
+        margin-bottom: 1.25rem !important;
+        padding-bottom: 0.75rem !important;
+    }
 }
 
 @media (max-width: 600px) {
@@ -2111,6 +2115,10 @@ kbd {
     }
     .hero-val-row {
         font-size: 0.85rem !important;
+    }
+    .hero-section {
+        margin-bottom: 1rem !important;
+        padding-bottom: 0.5rem !important;
     }
 }
 
