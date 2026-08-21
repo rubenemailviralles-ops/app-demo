@@ -1111,9 +1111,16 @@ kbd {
 }
 
 .grid-card-title {
-    font-size: 0.95rem;
-    font-weight: 700;
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    font-weight: 400; /* Less bold, matching banner-desc look */
     margin-bottom: 0.15rem;
+    color: var(--text-muted); /* Light grey color */
+    line-height: 1.4;
+    transition: color var(--transition-smooth);
+}
+
+.grid-card:hover .grid-card-title {
     color: #ffffff;
 }
 
