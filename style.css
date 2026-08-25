@@ -18,6 +18,12 @@
     --shadow-premium: 0 16px 40px rgba(0, 0, 0, 0.5);
     --glass-blur: blur(12px);
     --transition-smooth: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Interactive Particle Void Variables */
+    --bg-void: #030508;
+    --bg-dark-blue: #07101e;
+    --accent-cyan: #00d2ff;
+    --accent-blue: #1e90ff;
 }
 
 * {
@@ -27,7 +33,7 @@
 }
 
 html, body {
-    background-color: var(--bg-dark);
+    background-color: var(--bg-void);
     color: var(--text-main);
     font-family: var(--font-body);
     height: 100vh;
@@ -38,27 +44,78 @@ html, body {
     flex-direction: column;
 }
 
-/* Background Glowing Accents */
-body::before, body::after {
-    content: '';
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    filter: blur(120px);
-    z-index: -1;
-    opacity: 0.15;
+body {
+    position: relative;
+}
+
+/* Fixed Background Canvas for Floating Particles */
+#bg-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
     pointer-events: none;
 }
-body::before {
-    top: 10%;
-    left: 10%;
-    background: var(--primary);
+
+/* Subtle Geometric Dark Blue Grid Overlay */
+.bg-grid-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(to right, rgba(0, 210, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 210, 255, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    z-index: 1;
+    pointer-events: none;
+    mask-image: radial-gradient(circle at 50% 40%, black 20%, transparent 80%);
+    -webkit-mask-image: radial-gradient(circle at 50% 40%, black 20%, transparent 80%);
 }
-body::after {
+
+/* Animated Ambient Glow Orbs */
+.ambient-glow {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(140px);
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.45;
+    animation: pulseGlow 10s infinite alternate ease-in-out;
+}
+
+.glow-1 {
+    top: -150px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 700px;
+    height: 450px;
+    background: radial-gradient(circle, var(--accent-blue) 0%, rgba(0, 210, 255, 0.2) 50%, transparent 70%);
+}
+
+.glow-2 {
+    top: 40%;
+    right: -200px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(10, 25, 47, 0.8) 0%, rgba(0, 210, 255, 0.15) 50%, transparent 70%);
+    animation-delay: -5s;
+}
+
+.glow-3 {
     bottom: 10%;
-    right: 15%;
-    background: var(--secondary);
+    left: -150px;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(30, 144, 255, 0.2) 0%, transparent 70%);
+}
+
+@keyframes pulseGlow {
+    0% { opacity: 0.35; transform: scale(1) translateY(0); }
+    100% { opacity: 0.6; transform: scale(1.1) translateY(20px); }
 }
 
 /* Typography styles */
@@ -140,6 +197,7 @@ h1, h2, h3, h4, h5, h6 {
     flex: 1;
     height: calc(100vh - 140px); /* Subtract header and footer */
     position: relative;
+    z-index: 2;
     transition: var(--transition-smooth);
 }
 
