@@ -194,10 +194,14 @@ h1, h2, h3, h4, h5, h6 {
     display: grid;
     grid-template-columns: 1fr 360px; /* Split view */
     flex: 1;
-    height: calc(100vh - 140px); /* Subtract header and footer */
+    height: calc(100vh - 70px); /* Subtract header height only by default */
     position: relative;
     z-index: 2;
     transition: var(--transition-smooth);
+}
+
+body:has(#footerControls:not(.hidden)) .presentation-container {
+    height: calc(100vh - 140px); /* Subtract both header and footer when footer is active */
 }
 
 /* Presenter Mode Off / Full Presentation State */
@@ -753,8 +757,12 @@ kbd {
 
     .presentation-container {
         grid-template-columns: 1fr !important;
-        height: calc(100vh - 114px) !important; /* Keep it fixed height (Navbar 64px + footer 50px) */
+        height: calc(100vh - 64px) !important; /* Subtract header height only by default */
         overflow-y: hidden !important; /* Prevent main pane scrolling */
+    }
+
+    body:has(#footerControls:not(.hidden)) .presentation-container {
+        height: calc(100vh - 114px) !important; /* Subtract header + footer when footer is active */
     }
     
     .presentation-container.presenter-mode-active .presenter-sidebar {
@@ -1109,7 +1117,11 @@ kbd {
         text-align: center !important;
     }
     .presentation-container {
-        height: calc(100vh - 114px) !important; /* Keep it fixed height (Navbar 64px + footer 50px) */
+        height: calc(100vh - 64px) !important; /* Subtract header height only by default */
+    }
+
+    body:has(#footerControls:not(.hidden)) .presentation-container {
+        height: calc(100vh - 114px) !important; /* Subtract header + footer when footer is active */
     }
     
     .dashboard-grid {
@@ -1338,6 +1350,7 @@ kbd {
     opacity: 0 !important;
     pointer-events: none !important;
     transform: translateY(20px) !important;
+    display: none !important;
 }
 
 .presenter-sidebar.hidden {
