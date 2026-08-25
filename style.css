@@ -126,9 +126,8 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Navbar */
 .navbar {
-    border-bottom: 1px solid var(--border-color);
-    background: rgba(10, 12, 16, 0.8);
-    backdrop-filter: var(--glass-blur);
+    border-bottom: none;
+    background: transparent;
     z-index: 10;
     padding: 0.75rem 2.5rem;
     height: 70px;
